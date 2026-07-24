@@ -5,6 +5,7 @@ export const WHATSAPP_URL = 'https://wa.me/639677163126'
 export const WHATSAPP_NUMBER = '+63 967 716 3126'
 
 export const YOUTUBE_URL = 'https://www.youtube.com/channel/UCMreYV-xRjIxodIQm0-xeLw'
+export const MOST_VIEWED_VIDEO_URL = 'https://www.youtube.com/watch?v=zxmHYk4HpPs&t=22s&ab_channel=Leblanc'
 
 export const REFERENCES_DISCORD_URL = 'https://discord.gg/ycNCMPQB3Q'
 

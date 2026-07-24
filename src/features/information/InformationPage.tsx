@@ -1,6 +1,7 @@
-import { BookOpen, ShieldCheck, ShieldAlert, HelpCircle, PlayCircle, Users, Store } from 'lucide-react'
+import { ShieldCheck, ShieldAlert, HelpCircle, PlayCircle, Users, Store, Trophy } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Card } from '@/components/ui/Card'
+import { Badge } from '@/components/ui/Badge'
 import { guidelines, faqs } from '@/data/information'
 import {
   DISCORD_HANDLE,
@@ -8,6 +9,7 @@ import {
   REFERENCES_DISCORD_URL,
   SERVER_DISCORD_URL,
   SERVER_DISCORD_LABEL,
+  MOST_VIEWED_VIDEO_URL,
 } from '@/lib/links'
 import { Accordion } from './Accordion'
 
@@ -17,24 +19,12 @@ const proofLinks = [
   { label: 'YouTube', href: YOUTUBE_URL, icon: PlayCircle },
 ]
 
-const steps = [
-  {
-    title: 'Get introduced',
-    description: 'An existing member vouches for you and the house reaches out directly.',
-  },
-  {
-    title: 'Browse quietly',
-    description: 'Look through current listings and server standing at your own pace.',
-  },
-  {
-    title: 'Speak to the house',
-    description: 'Inquire on anything of interest; the concierge desk handles the rest.',
-  },
-  {
-    title: 'Settle through the Ledger',
-    description: 'Every transaction is confirmed and settled through the house Ledger.',
-  },
+const serverLinks = [
+  { label: 'References', href: REFERENCES_DISCORD_URL },
+  { label: SERVER_DISCORD_LABEL, href: SERVER_DISCORD_URL },
 ]
+
+const youtubeLinks = [{ label: 'Most Viewed Video', href: MOST_VIEWED_VIDEO_URL }]
 
 export function InformationPage() {
   return (
@@ -78,59 +68,74 @@ export function InformationPage() {
 
       <section className="mt-14">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-          <BookOpen className="size-5 text-gold-400" />
-          How it works
+          <Trophy className="size-5 text-gold-400" />
+          Leblanc Highest Trade
         </h3>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
-          {steps.map((step, index) => (
-            <Card key={step.title} className="p-5">
-              <span className="flex size-8 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-sm font-medium text-gold-300">
-                {index + 1}
-              </span>
-              <h4 className="mt-3 font-medium text-ink-100">{step.title}</h4>
-              <p className="mt-1 text-sm text-ink-400">{step.description}</p>
-            </Card>
-          ))}
-        </div>
+        <Card className="mt-5 overflow-hidden">
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <img
+              src="/highest-trade.jpg"
+              alt="Leblanc's biggest trades in history"
+              className="absolute inset-0 size-full object-cover"
+            />
+            <div className="absolute left-3 top-3">
+              <Badge tone="neutral">TOP MELEE</Badge>
+            </div>
+          </div>
+          <p className="p-5 text-sm leading-relaxed text-ink-300">
+            Three of the largest trades ever brokered through the house — Arrow St (Lv. 793),
+            Venecos St (Lv. 852), and Shiroe St (Lv. 812) — each recorded as the biggest trade in
+            their history.
+          </p>
+        </Card>
       </section>
 
       <section className="mt-14">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-          <ShieldCheck className="size-5 text-gold-400" />
-          House guidelines
+          <Store className="size-5 text-gold-400" />
+          Leblanc Server
         </h3>
-        <div className="mt-5 space-y-4">
-          {guidelines.map((section) => (
-            <Card key={section.title} className="p-5">
-              <h4 className="font-medium text-ink-100">{section.title}</h4>
-              <ul className="mt-3 space-y-2">
-                {section.points.map((point) => (
-                  <li key={point} className="flex gap-2 text-sm text-ink-300">
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-gold-500" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
+        <Card className="mt-5 p-5">
+          <ul className="space-y-2">
+            {serverLinks.map((link) => (
+              <li key={link.label} className="flex gap-2 text-sm text-ink-300">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-gold-500" />
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-gold-300"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </section>
 
-      <section className="mt-14 pb-4">
+      <section className="mt-14">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-          <HelpCircle className="size-5 text-gold-400" />
-          Frequently asked questions
+          <PlayCircle className="size-5 text-gold-400" />
+          Leblanc Youtube Account
         </h3>
-        <div className="mt-5">
-          <Accordion
-            items={faqs.map((faq, i) => ({
-              id: `faq-${i}`,
-              title: faq.question,
-              content: faq.answer,
-            }))}
-            defaultOpenId="faq-0"
-          />
-        </div>
+        <Card className="mt-5 p-5">
+          <ul className="space-y-2">
+            {youtubeLinks.map((link) => (
+              <li key={link.label} className="flex gap-2 text-sm text-ink-300">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-gold-500" />
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-gold-300"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </section>
     </div>
   )
