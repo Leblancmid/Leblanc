@@ -50,6 +50,18 @@ export function InformationPage() {
                 </p>
               </div>
             </div>
+
+            <div className="overflow-hidden rounded-lg border border-ink-600">
+              <img
+                src="/leblancmid.png"
+                alt="Leblancmid Lv. 164 in-game character"
+                className="h-32 w-full object-cover"
+              />
+            </div>
+            <p className="-mt-2 text-xs uppercase tracking-wider text-ink-500">
+              In-game character — Leblancmid Lv. 164
+            </p>
+
             <div className="flex flex-wrap gap-4">
               {proofLinks.map((link) => (
                 <a
