@@ -23,9 +23,13 @@ export function HomePage() {
               Welcome to <span className="text-gold-400">Leblanc</span>
             </h1>
             <p className="mt-5 text-balance text-lg text-ink-300">
-              A trusted middleman for rare accounts and honest trades — no bots, no resellers,
-              just Leblanc keeping every deal straight. Look around, then reach out when you're
-              ready.
+              A trusted middleman for top accounts and honest trades — no bots, just Leblanc
+              keeping every deal straight. Look around, then reach out when you're ready.
+            </p>
+            <p className="mt-3 text-balance text-sm text-ink-400">
+              Also building websites on the side — for businesses, projects, or anything else
+              you've got in mind. This site's an example; just ask. Payment in Rucoy gold, $, or
+              € — whatever's easiest.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <LinkButton to="/for-sale" size="lg" className="w-full gap-2 sm:w-auto">
