@@ -3,9 +3,10 @@ import { ArrowRight } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
 import { Card } from '@/components/ui/Card'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { StatBlock } from './StatBlock'
 import { listings } from '@/data/listings'
 import { ListingThumbnail } from '@/features/for-sale/ListingThumbnail'
+import { DiscordServerCard } from '@/features/information/DiscordServerCard'
+import { REFERENCES_DISCORD_URL, SERVER_DISCORD_URL, SERVER_DISCORD_LABEL } from '@/lib/links'
 
 const featured = listings.filter((l) => l.featured).slice(0, 3)
 
@@ -28,17 +29,10 @@ export function HomePage() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <LinkButton to="/for-sale" size="lg" className="w-full gap-2 sm:w-auto">
-                Browse For Sale
+                Browse Accounts For Sale
                 <ArrowRight className="size-4" />
               </LinkButton>
             </div>
-          </div>
-
-          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
-            <StatBlock value={14} label="Active listings" />
-            <StatBlock value={342} label="Members online" />
-            <StatBlock value={99} suffix=".97%" label="Network uptime" />
-            <StatBlock value={7} label="Years established" />
           </div>
         </div>
       </section>
@@ -77,30 +71,30 @@ export function HomePage() {
 
       <section className="border-t border-ink-700/60 px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-6 sm:grid-cols-2">
-            {[
-              {
-                title: 'For Sale',
-                description: 'Melee, distance, and magic builds, all vetted personally by Leblanc.',
-                to: '/for-sale',
-              },
-              {
-                title: 'Information',
-                description: 'Verified identity, trade highlights, and where to find Leblanc.',
-                to: '/information',
-              },
-            ].map((item) => (
-              <Link key={item.to} to={item.to}>
-                <Card interactive className="h-full p-6">
-                  <h3 className="text-lg font-medium text-ink-100">{item.title}</h3>
-                  <p className="mt-2 text-sm text-ink-400">{item.description}</p>
-                  <span className="mt-4 flex items-center gap-1.5 text-sm text-gold-300">
-                    Explore
-                    <ArrowRight className="size-3.5" />
-                  </span>
-                </Card>
-              </Link>
-            ))}
+          <SectionHeading
+            eyebrow="Community"
+            title="Leblanc servers"
+            description="Where to find Leblanc's official Discord communities."
+          />
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            <DiscordServerCard
+              name="Leblanc"
+              href={REFERENCES_DISCORD_URL}
+              iconSrc="/leblancmid.png"
+              online={150}
+              members={2000}
+              established="Nov 2024"
+              bannerClassName="bg-gradient-to-b from-emerald-500 to-emerald-700"
+            />
+            <DiscordServerCard
+              name={SERVER_DISCORD_LABEL}
+              href={SERVER_DISCORD_URL}
+              online={450}
+              members={5000}
+              established="Sep 2023"
+              bannerClassName="bg-gradient-to-b from-cyan-400 to-teal-600"
+            />
           </div>
         </div>
       </section>
