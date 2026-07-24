@@ -1,6 +1,7 @@
 import { User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
-import { Button } from '@/components/ui/Button'
+import { buttonClasses } from '@/components/ui/Button'
+import { DISCORD_URL } from '@/lib/links'
 import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
 
@@ -13,10 +14,9 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
 interface ListingModalProps {
   listing: Listing | null
   onClose: () => void
-  onInquire: (listing: Listing) => void
 }
 
-export function ListingModal({ listing, onClose, onInquire }: ListingModalProps) {
+export function ListingModal({ listing, onClose }: ListingModalProps) {
   if (!listing) return null
 
   return (
@@ -26,7 +26,14 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
       size="lg"
       footer={
         <div className="flex justify-end">
-          <Button onClick={() => onInquire(listing)}>Inquire with seller</Button>
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses('primary', 'md')}
+          >
+            Inquire with seller
+          </a>
         </div>
       }
     >
