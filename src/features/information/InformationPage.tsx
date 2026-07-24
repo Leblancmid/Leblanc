@@ -10,16 +10,12 @@ import {
   SERVER_DISCORD_LABEL,
   MOST_VIEWED_VIDEO_URL,
 } from '@/lib/links'
+import { DiscordServerCard } from './DiscordServerCard'
 
 const proofLinks = [
   { label: 'References', href: REFERENCES_DISCORD_URL, icon: Users },
   { label: SERVER_DISCORD_LABEL, href: SERVER_DISCORD_URL, icon: Store },
   { label: 'YouTube', href: YOUTUBE_URL, icon: PlayCircle },
-]
-
-const serverLinks = [
-  { label: 'References', href: REFERENCES_DISCORD_URL },
-  { label: SERVER_DISCORD_LABEL, href: SERVER_DISCORD_URL },
 ]
 
 const youtubeLinks = [{ label: 'Most Viewed Video', href: MOST_VIEWED_VIDEO_URL }]
@@ -109,23 +105,25 @@ export function InformationPage() {
           <Store className="size-5 text-gold-400" />
           Leblanc Server
         </h3>
-        <Card className="mt-5 p-5">
-          <ul className="space-y-2">
-            {serverLinks.map((link) => (
-              <li key={link.label} className="flex gap-2 text-sm text-ink-300">
-                <span className="mt-2 size-1 shrink-0 rounded-full bg-gold-500" />
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-gold-300"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Card>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <DiscordServerCard
+            name="Leblanc"
+            href={REFERENCES_DISCORD_URL}
+            iconSrc="/leblancmid.png"
+            online={150}
+            members={2000}
+            established="Nov 2024"
+            bannerClassName="bg-gradient-to-b from-emerald-500 to-emerald-700"
+          />
+          <DiscordServerCard
+            name={SERVER_DISCORD_LABEL}
+            href={SERVER_DISCORD_URL}
+            online={450}
+            members={5000}
+            established="Sep 2023"
+            bannerClassName="bg-gradient-to-b from-cyan-400 to-teal-600"
+          />
+        </div>
       </section>
 
       <section className="mt-14">
