@@ -30,7 +30,7 @@ export function InformationPage() {
       <SectionHeading
         eyebrow="About Leblanc"
         title="Information"
-        description="Everything you need to know about trading with Leblanc — verified identity, proof of trades, and where to find Leblanc online."
+        description="Verified identity, proof of trades, and where to find Leblanc online."
       />
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -98,7 +98,7 @@ export function InformationPage() {
             <p className="p-5 text-sm leading-relaxed text-ink-300">
               The highest trade in Rucoy history — three accounts secured in a single deal:
               the server's Top 1 Melee, Top 4 Distance, and Top 10 Mage, together worth €9,000.
-              Arrow St, Venecos St, and Shiroe St all changed hands through Leblanc way ba.
+              Arrow St, Venecos St, and Shiroe St all changed hands through Leblanc way back 2025.
             </p>
           </Card>
         </section>
