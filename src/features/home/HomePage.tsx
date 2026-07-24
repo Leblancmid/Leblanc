@@ -73,7 +73,7 @@ export function HomePage() {
                 <ListingThumbnail listing={listing} />
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-lg font-medium text-ink-100">{listing.title}</h3>
-                  <p className="mt-1 flex-1 text-sm text-ink-400">{listing.location}</p>
+                  <p className="mt-1 flex-1 text-sm text-ink-400">{listing.server}</p>
                   <Link
                     to="/for-sale"
                     className="mt-4 flex items-center gap-1.5 self-end text-sm text-ink-300 transition-colors hover:text-gold-300"
@@ -94,7 +94,7 @@ export function HomePage() {
             {[
               {
                 title: 'For Sale',
-                description: 'Vehicles, properties, and standing retainers.',
+                description: 'Melee, distance, and magic builds, leveled and vetted by the house.',
                 to: '/for-sale',
               },
               {

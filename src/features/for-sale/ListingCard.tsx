@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react'
+import { Server } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
@@ -16,8 +16,8 @@ export function ListingCard({ listing, onSelect }: ListingCardProps) {
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-medium text-ink-100">{listing.title}</h3>
         <p className="mt-1 flex items-center gap-1 text-sm text-ink-400">
-          <MapPin className="size-3.5" />
-          {listing.location}
+          <Server className="size-3.5" />
+          {listing.server}
         </p>
         <p className="mt-3 flex-1 line-clamp-2 text-sm text-ink-300">{listing.description}</p>
 

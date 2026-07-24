@@ -1,4 +1,4 @@
-import { MapPin, User, CalendarDays, Tag } from 'lucide-react'
+import { Server, User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -34,8 +34,8 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
       title={listing.title}
       description={
         <span className="flex items-center gap-1.5">
-          <MapPin className="size-3.5" />
-          {listing.location}
+          <Server className="size-3.5" />
+          {listing.server}
         </span>
       }
       footer={
@@ -52,12 +52,16 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
 
         <div className="grid grid-cols-2 gap-4 rounded-lg border border-ink-700 bg-ink-800/40 p-4 text-sm">
           <div className="flex items-center gap-2 text-ink-300">
+            <Star className="size-4 text-ink-500" />
+            <span>Level {listing.level}</span>
+          </div>
+          <div className="flex items-center gap-2 text-ink-300">
             <User className="size-4 text-ink-500" />
             <span>{listing.seller}</span>
           </div>
           <div className="flex items-center gap-2 text-ink-300">
-            <Tag className="size-4 text-ink-500" />
-            <span>{listing.condition}</span>
+            <ShieldCheck className="size-4 text-ink-500" />
+            <span>{listing.standing}</span>
           </div>
           <div className="flex items-center gap-2 text-ink-300">
             <CalendarDays className="size-4 text-ink-500" />

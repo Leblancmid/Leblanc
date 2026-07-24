@@ -1,13 +1,14 @@
-export type ListingCategory = 'Vehicle' | 'Property' | 'Service'
+export type ListingCategory = 'Melee' | 'Distance' | 'Magic'
 
 export interface Listing {
   id: string
   title: string
   category: ListingCategory
+  level: number
   price: number
-  location: string
+  server: string
   seller: string
-  condition: string
+  standing: string
   description: string
   tags: string[]
   featured?: boolean

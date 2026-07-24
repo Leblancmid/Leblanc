@@ -22,7 +22,7 @@ export function ForSalePage() {
       <SectionHeading
         eyebrow="Marketplace"
         title="For Sale"
-        description="Vehicles, properties, and standing retainers, listed by members and vetted by the house."
+        description="Melee, distance, and magic-build accounts, listed by members and vetted by the house."
       />
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

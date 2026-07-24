@@ -1,12 +1,12 @@
-import { Car, Building2, Sparkles, type LucideIcon } from 'lucide-react'
+import { Swords, Target, Wand2, type LucideIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { cn } from '@/lib/cn'
 import type { Listing } from '@/types'
 
 const categoryIcon: Record<Listing['category'], LucideIcon> = {
-  Vehicle: Car,
-  Property: Building2,
-  Service: Sparkles,
+  Melee: Swords,
+  Distance: Target,
+  Magic: Wand2,
 }
 
 const currency = new Intl.NumberFormat('en-US', {
@@ -65,6 +65,10 @@ export function ListingThumbnail({
           />
         </>
       )}
+
+      <div className="absolute left-3 top-3">
+        <Badge tone="neutral">LV {listing.level}</Badge>
+      </div>
 
       <div className="absolute right-3 top-3">
         <Badge tone="gold">{listing.category}</Badge>
