@@ -65,7 +65,7 @@ export function HomePage() {
                   to="/for-sale"
                   className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
                 >
-                  <ListingThumbnail listing={listing} showSlots />
+                  <ListingThumbnail listing={listing} />
                 </Link>
               </Card>
             ))}

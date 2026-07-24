@@ -5,13 +5,12 @@ export interface Listing {
   title: string
   category: ListingCategory
   level: number
-  price: number
-  server: string
-  seller: string
-  standing: string
-  description: string
   featured?: boolean
-  postedAt: string
   image?: string
+  price?: number
+  server?: string
+  seller?: string
+  standing?: string
+  postedAt?: string
 }
 
