@@ -33,20 +33,24 @@ export function InformationPage() {
         description="Everything a member needs to know about Leblanc  — from getting in, to buying and selling, to who to ask when something's unclear."
       />
 
-      <section className="mt-10">
-        <Card className="flex flex-col gap-4 border-gold-500/30 bg-gold-500/5 p-5 sm:flex-row sm:items-start">
-          <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300">
-            <ShieldAlert className="size-5" />
-          </span>
-          <div>
-            <h3 className="font-medium text-ink-100">Only trust {DISCORD_HANDLE}</h3>
-            <p className="mt-1 text-sm leading-relaxed text-ink-300">
-              Leblanc trades exclusively through the{' '}
-              <span className="font-medium text-gold-300">{DISCORD_HANDLE}</span> Discord account. If
-              anyone else reaches out claiming to be Leblanc, it isn't us — verify through the links
-              below before sending anything.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-4">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        <section className="flex flex-col">
+          <Card className="flex h-full flex-col gap-4 border-gold-500/30 bg-gold-500/5 p-5">
+            <div className="flex items-start gap-4">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300">
+                <ShieldAlert className="size-5" />
+              </span>
+              <div>
+                <h3 className="font-medium text-ink-100">Only trust {DISCORD_HANDLE}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-ink-300">
+                  Leblanc trades exclusively through the{' '}
+                  <span className="font-medium text-gold-300">{DISCORD_HANDLE}</span> Discord
+                  account. If anyone else reaches out claiming to be Leblanc, it isn't us — verify
+                  through the links below before sending anything.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-4">
               {proofLinks.map((link) => (
                 <a
                   key={link.label}
@@ -60,33 +64,33 @@ export function InformationPage() {
                 </a>
               ))}
             </div>
-          </div>
-        </Card>
-      </section>
+          </Card>
+        </section>
 
-      <section className="mt-14">
-        <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-          <Trophy className="size-5 text-gold-400" />
-          Leblanc Highest Trade
-        </h3>
-        <Card className="mt-5 overflow-hidden">
-          <div className="relative aspect-[16/9] w-full overflow-hidden">
-            <img
-              src="/highest-trade.jpg"
-              alt="Leblanc's biggest trades in history"
-              className="absolute inset-0 size-full object-cover"
-            />
-            <div className="absolute left-3 top-3">
-              <Badge tone="neutral">TOP MELEE</Badge>
+        <section className="flex flex-col">
+          <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
+            <Trophy className="size-5 text-gold-400" />
+            Leblanc Highest Trade
+          </h3>
+          <Card className="mt-5 flex-1 overflow-hidden">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <img
+                src="/highest-trade.jpg"
+                alt="Leblanc's biggest trades in history"
+                className="absolute inset-0 size-full object-cover"
+              />
+              <div className="absolute left-3 top-3">
+                <Badge tone="neutral">TOP MELEE</Badge>
+              </div>
             </div>
-          </div>
-          <p className="p-5 text-sm leading-relaxed text-ink-300">
-            Three of the largest trades ever brokered through the house — Arrow St (Lv. 793),
-            Venecos St (Lv. 852), and Shiroe St (Lv. 812) — each recorded as the biggest trade in
-            their history.
-          </p>
-        </Card>
-      </section>
+            <p className="p-5 text-sm leading-relaxed text-ink-300">
+              Three of the largest trades ever brokered through the house — Arrow St (Lv. 793),
+              Venecos St (Lv. 852), and Shiroe St (Lv. 812) — each recorded as the biggest trade in
+              their history.
+            </p>
+          </Card>
+        </section>
+      </div>
 
       <section className="mt-14">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
