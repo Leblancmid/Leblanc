@@ -1,4 +1,4 @@
-export type ListingCategory = 'Vehicle' | 'Property' | 'Collectible' | 'Service'
+export type ListingCategory = 'Vehicle' | 'Property' | 'Service'
 
 export interface Listing {
   id: string

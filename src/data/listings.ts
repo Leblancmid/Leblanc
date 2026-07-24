@@ -30,20 +30,6 @@ export const listings: Listing[] = [
     postedAt: '2026-07-15',
   },
   {
-    id: 'lb-003',
-    title: '1958 Hand-Wound Chronograph',
-    category: 'Collectible',
-    price: 41200,
-    location: 'Private vault',
-    seller: 'M. Okafor',
-    condition: 'Excellent',
-    description:
-      'Original dial with gentle patina, serviced twelve months ago by an independent watchmaker. Comes with extract of archives and the original travel case.',
-    tags: ['Vintage', 'Documented'],
-    featured: true,
-    postedAt: '2026-07-20',
-  },
-  {
     id: 'lb-004',
     title: 'Private Cellar Curation Retainer',
     category: 'Service',
@@ -54,6 +40,7 @@ export const listings: Listing[] = [
     description:
       'Quarterly retainer covering acquisition, storage, and rotation of a personal collection, with tasting notes prepared ahead of every delivery.',
     tags: ['Concierge', 'Quarterly'],
+    featured: true,
     postedAt: '2026-07-10',
   },
   {
@@ -81,19 +68,6 @@ export const listings: Listing[] = [
       'A wood-panelled study annex with a private courtyard entrance, sold separately from the main château. Ideal for a discreet second address.',
     tags: ['Courtyard', 'Detached'],
     postedAt: '2026-07-05',
-  },
-  {
-    id: 'lb-007',
-    title: 'Art Deco Cigarette Case',
-    category: 'Collectible',
-    price: 3400,
-    location: 'Private vault',
-    seller: 'Leblanc Archive',
-    condition: 'Very good',
-    description:
-      'Sterling silver with a hand-engraved monogram panel left blank for the next owner. Hallmarked and dated to the early period.',
-    tags: ['Silver', 'Engravable'],
-    postedAt: '2026-07-21',
   },
   {
     id: 'lb-008',
@@ -135,19 +109,6 @@ export const listings: Listing[] = [
     postedAt: '2026-06-22',
   },
   {
-    id: 'lb-011',
-    title: 'First Edition, Author’s Proof',
-    category: 'Collectible',
-    price: 12750,
-    location: 'Private vault',
-    seller: 'S. Duval',
-    condition: 'Fine',
-    description:
-      'A rare author-corrected proof bound in half morocco, accompanied by a signed letter of provenance from the previous keeper.',
-    tags: ['Signed', 'Bound'],
-    postedAt: '2026-06-19',
-  },
-  {
     id: 'lb-012',
     title: 'Late-Night Table Reservation, Standing',
     category: 'Service',
@@ -185,19 +146,6 @@ export const listings: Listing[] = [
       'Former estate gatehouse, fully renovated with the original stonework retained and a small library added to the ground floor.',
     tags: ['Renovated', 'Stonework'],
     postedAt: '2026-06-15',
-  },
-  {
-    id: 'lb-015',
-    title: 'Set of Four Crystal Decanters',
-    category: 'Collectible',
-    price: 2100,
-    location: 'Private vault',
-    seller: 'Leblanc Archive',
-    condition: 'Excellent',
-    description:
-      'A matched set, hand-cut, acquired from an estate sale and kept in their original fitted case since.',
-    tags: ['Hand-cut', 'Matched set'],
-    postedAt: '2026-07-03',
   },
   {
     id: 'lb-016',

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X, Circle } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Logo } from './Logo'
 import { cn } from '@/lib/cn'
 

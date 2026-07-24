@@ -1,4 +1,4 @@
-import { Car, Building2, Gem, Sparkles, MapPin } from 'lucide-react'
+import { Car, Building2, Sparkles, MapPin } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import type { Listing } from '@/types'
@@ -6,7 +6,6 @@ import type { Listing } from '@/types'
 const categoryIcon = {
   Vehicle: Car,
   Property: Building2,
-  Collectible: Gem,
   Service: Sparkles,
 } as const
 

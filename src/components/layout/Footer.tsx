@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom'
-import { Circle } from 'lucide-react'
 import { Logo } from './Logo'
 
 export function Footer() {
@@ -18,11 +16,6 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col-reverse items-center justify-between gap-4 border-t border-ink-700/80 pt-6 sm:flex-row">
           <p className="text-xs text-ink-500">&copy; {new Date().getFullYear()} Leblanc House. All rights reserved.</p>
-          <Link
-            to="/server"
-            className="flex items-center gap-1.5 text-xs text-ink-400 transition-colors hover:text-gold-300"
-          >
-          </Link>
         </div>
       </div>
     </footer>

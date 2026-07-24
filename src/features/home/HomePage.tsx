@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Car, Building2, Gem, Sparkles } from 'lucide-react'
+import { ArrowRight, Car, Building2, Sparkles } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
 import { Card } from '@/components/ui/Card'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -10,7 +10,6 @@ import { listings } from '@/data/listings'
 const categoryIcon = {
   Vehicle: Car,
   Property: Building2,
-  Collectible: Gem,
   Service: Sparkles,
 } as const
 
@@ -51,7 +50,7 @@ export function HomePage() {
           </div>
 
           <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
-            <StatBlock value={18} label="Active listings" />
+            <StatBlock value={14} label="Active listings" />
             <StatBlock value={342} label="Members online" />
             <StatBlock value={99} suffix=".97%" label="Network uptime" />
             <StatBlock value={7} label="Years established" />
@@ -116,7 +115,7 @@ export function HomePage() {
             {[
               {
                 title: 'For Sale',
-                description: 'Vehicles, properties, collectibles, and standing retainers.',
+                description: 'Vehicles, properties, and standing retainers.',
                 to: '/for-sale',
               },
               {
