@@ -1,8 +1,7 @@
-import { ShieldCheck, ShieldAlert, HelpCircle, PlayCircle, Users, Store, Trophy } from 'lucide-react'
+import { ShieldAlert, PlayCircle, Users, Store, Trophy } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
-import { guidelines, faqs } from '@/data/information'
 import {
   DISCORD_HANDLE,
   YOUTUBE_URL,
@@ -11,7 +10,6 @@ import {
   SERVER_DISCORD_LABEL,
   MOST_VIEWED_VIDEO_URL,
 } from '@/lib/links'
-import { Accordion } from './Accordion'
 
 const proofLinks = [
   { label: 'References', href: REFERENCES_DISCORD_URL, icon: Users },
