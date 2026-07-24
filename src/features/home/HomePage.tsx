@@ -65,23 +65,13 @@ export function HomePage() {
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((listing) => (
-              <Card
-                key={listing.id}
-                interactive
-                className="flex flex-col overflow-hidden animate-slide-up"
-              >
-                <ListingThumbnail listing={listing} />
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-lg font-medium text-ink-100">{listing.title}</h3>
-                  <p className="mt-1 flex-1 text-sm text-ink-400">{listing.server}</p>
-                  <Link
-                    to="/for-sale"
-                    className="mt-4 flex items-center gap-1.5 self-end text-sm text-ink-300 transition-colors hover:text-gold-300"
-                  >
-                    View details
-                    <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
+              <Card key={listing.id} interactive className="overflow-hidden animate-slide-up">
+                <Link
+                  to="/for-sale"
+                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
+                >
+                  <ListingThumbnail listing={listing} showSlots />
+                </Link>
               </Card>
             ))}
           </div>

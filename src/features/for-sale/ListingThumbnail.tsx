@@ -1,5 +1,5 @@
 import { Swords, Target, Wand2, type LucideIcon } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
+import { Badge, type BadgeTone } from '@/components/ui/Badge'
 import { cn } from '@/lib/cn'
 import type { Listing } from '@/types'
 
@@ -9,13 +9,25 @@ const categoryIcon: Record<Listing['category'], LucideIcon> = {
   Magic: Wand2,
 }
 
+const categoryTone: Record<Listing['category'], BadgeTone> = {
+  Melee: 'blue',
+  Magic: 'purple',
+  Distance: 'green',
+}
+
 interface ListingThumbnailProps {
   listing: Listing
   size?: 'card' | 'hero'
+  showSlots?: boolean
   className?: string
 }
 
-export function ListingThumbnail({ listing, size = 'card', className }: ListingThumbnailProps) {
+export function ListingThumbnail({
+  listing,
+  size = 'card',
+  showSlots = false,
+  className,
+}: ListingThumbnailProps) {
   const Icon = categoryIcon[listing.category]
 
   return (
@@ -61,6 +73,13 @@ export function ListingThumbnail({ listing, size = 'card', className }: ListingT
       <div className="absolute right-3 top-3">
         <Badge tone="gold">{listing.category}</Badge>
       </div>
+
+      {showSlots && (
+        <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5">
+          <Badge tone={categoryTone[listing.category]}>{listing.category} Ring</Badge>
+          <Badge tone={categoryTone[listing.category]}>{listing.category} Neck</Badge>
+        </div>
+      )}
     </div>
   )
 }

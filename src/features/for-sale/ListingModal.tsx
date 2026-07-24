@@ -1,15 +1,8 @@
 import { Server, User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
-import { Badge, type BadgeTone } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import type { Listing, ListingCategory } from '@/types'
+import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
-
-const categoryTone: Record<ListingCategory, BadgeTone> = {
-  Melee: 'blue',
-  Magic: 'purple',
-  Distance: 'green',
-}
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -45,7 +38,7 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
       }
     >
       <div className="flex flex-col gap-5">
-        <ListingThumbnail listing={listing} size="hero" className="rounded-lg" />
+        <ListingThumbnail listing={listing} size="hero" showSlots className="rounded-lg" />
 
         <p className="text-sm leading-relaxed text-ink-300">{listing.description}</p>
 
@@ -66,11 +59,6 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
             <CalendarDays className="size-4 text-ink-500" />
             <span>Listed {dateFormatter.format(new Date(listing.postedAt))}</span>
           </div>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          <Badge tone={categoryTone[listing.category]}>{listing.category} Ring</Badge>
-          <Badge tone={categoryTone[listing.category]}>{listing.category} Neck</Badge>
         </div>
       </div>
     </Modal>
