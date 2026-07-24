@@ -1,5 +1,5 @@
 import { Swords, Target, Wand2, type LucideIcon } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
+import { Badge, type BadgeTone } from '@/components/ui/Badge'
 import { cn } from '@/lib/cn'
 import type { Listing } from '@/types'
 
@@ -7,6 +7,12 @@ const categoryIcon: Record<Listing['category'], LucideIcon> = {
   Melee: Swords,
   Distance: Target,
   Magic: Wand2,
+}
+
+const categoryTone: Record<Listing['category'], BadgeTone> = {
+  Melee: 'blue',
+  Distance: 'green',
+  Magic: 'purple',
 }
 
 interface ListingThumbnailProps {
@@ -30,7 +36,7 @@ export function ListingThumbnail({ listing, size = 'card', className }: ListingT
           <img
             src={listing.image}
             alt={listing.title}
-            className="absolute inset-0 size-full object-cover"
+            className="absolute inset-0 size-full object-cover object-right"
           />
         ) : (
           <>
@@ -57,7 +63,7 @@ export function ListingThumbnail({ listing, size = 'card', className }: ListingT
 
       <div className="flex items-center gap-2 border-t border-ink-700 bg-ink-900 px-3 py-2">
         <Badge tone="neutral">LV {listing.level}</Badge>
-        <Badge tone="gold">{listing.category}</Badge>
+        <Badge tone={categoryTone[listing.category]}>{listing.category}</Badge>
       </div>
     </div>
   )
