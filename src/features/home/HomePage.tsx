@@ -31,9 +31,6 @@ export function HomePage() {
                 Browse For Sale
                 <ArrowRight className="size-4" />
               </LinkButton>
-              <LinkButton to="/server" variant="secondary" size="lg" className="w-full sm:w-auto">
-                Check server status
-              </LinkButton>
             </div>
           </div>
 
@@ -80,7 +77,7 @@ export function HomePage() {
 
       <section className="border-t border-ink-700/60 px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2">
             {[
               {
                 title: 'For Sale',
@@ -91,11 +88,6 @@ export function HomePage() {
                 title: 'Information',
                 description: 'Verified identity, trade highlights, and where to find Leblanc.',
                 to: '/information',
-              },
-              {
-                title: 'Server',
-                description: 'Live network status, connection details, and service health.',
-                to: '/server',
               },
             ].map((item) => (
               <Link key={item.to} to={item.to}>

@@ -15,30 +15,3 @@ export interface Listing {
   image?: string
 }
 
-export interface ServiceStatus {
-  name: string
-  status: 'operational' | 'degraded' | 'offline'
-  latencyMs: number
-}
-
-export interface ServerStatusData {
-  online: boolean
-  players: number
-  maxPlayers: number
-  uptimePercent: number
-  ping: number
-  ip: string
-  version: string
-  region: string
-  services: ServiceStatus[]
-}
-
-export interface FaqItem {
-  question: string
-  answer: string
-}
-
-export interface GuidelineSection {
-  title: string
-  points: string[]
-}
