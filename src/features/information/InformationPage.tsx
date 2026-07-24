@@ -93,7 +93,8 @@ export function InformationPage() {
             </div>
             <p className="p-5 text-sm leading-relaxed text-ink-300">
               The highest trade in Rucoy history — three accounts secured in a single deal:
-              the server's Top 1 Melee, Top 4 Distance, and Top 10 Mage, together worth €9,000.
+              the server's Top 1 Melee, Top 4 Distance, and Top 10 Mage, together worth{' '}
+              <span className="font-semibold text-gold-300">€9,000</span>.
               Arrow St, Venecos St, and Shiroe St all changed hands through Leblanc way back 2025.
             </p>
           </Card>

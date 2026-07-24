@@ -20,7 +20,7 @@ export function HomePage() {
               Trusted middleman, verified identity
             </span>
             <h1 className="mt-6 font-display text-5xl leading-[1.1] text-ink-50 sm:text-6xl">
-              Welcome to <span className="text-gold-400">Leblanc</span>
+              Welcome to <span className="text-gold-400">Leblanc Website</span>
             </h1>
             <p className="mt-5 text-balance text-lg text-ink-300">
               A trusted middleman for top accounts and honest trades — no bots, just Leblanc
