@@ -1,8 +1,21 @@
-import { BookOpen, ShieldCheck, HelpCircle } from 'lucide-react'
+import { BookOpen, ShieldCheck, ShieldAlert, HelpCircle, PlayCircle, Users, Store } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Card } from '@/components/ui/Card'
 import { guidelines, faqs } from '@/data/information'
+import {
+  DISCORD_HANDLE,
+  YOUTUBE_URL,
+  REFERENCES_DISCORD_URL,
+  SERVER_DISCORD_URL,
+  SERVER_DISCORD_LABEL,
+} from '@/lib/links'
 import { Accordion } from './Accordion'
+
+const proofLinks = [
+  { label: 'References', href: REFERENCES_DISCORD_URL, icon: Users },
+  { label: SERVER_DISCORD_LABEL, href: SERVER_DISCORD_URL, icon: Store },
+  { label: 'YouTube', href: YOUTUBE_URL, icon: PlayCircle },
+]
 
 const steps = [
   {
@@ -27,12 +40,43 @@ export function InformationPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
       <SectionHeading
-        eyebrow="About the house"
+        eyebrow="About Leblanc"
         title="Information"
-        description="Everything a member needs to know about how Leblanc runs — from getting in, to buying and selling, to who to ask when something's unclear."
+        description="Everything a member needs to know about Leblanc  — from getting in, to buying and selling, to who to ask when something's unclear."
       />
 
-      <section className="mt-12">
+      <section className="mt-10">
+        <Card className="flex flex-col gap-4 border-gold-500/30 bg-gold-500/5 p-5 sm:flex-row sm:items-start">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-300">
+            <ShieldAlert className="size-5" />
+          </span>
+          <div>
+            <h3 className="font-medium text-ink-100">Only trust {DISCORD_HANDLE}</h3>
+            <p className="mt-1 text-sm leading-relaxed text-ink-300">
+              Leblanc trades exclusively through the{' '}
+              <span className="font-medium text-gold-300">{DISCORD_HANDLE}</span> Discord account. If
+              anyone else reaches out claiming to be Leblanc, it isn't us — verify through the links
+              below before sending anything.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-4">
+              {proofLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-ink-300 transition-colors hover:text-gold-300"
+                >
+                  <link.icon className="size-4 text-ink-500" />
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      <section className="mt-14">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
           <BookOpen className="size-5 text-gold-400" />
           How it works
