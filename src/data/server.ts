@@ -6,7 +6,7 @@ export const serverStatus: ServerStatusData = {
   maxPlayers: 500,
   uptimePercent: 99.97,
   ping: 24,
-  ip: 'connect.leblanc.house:7777',
+  ip: 'connect.leblanc.gg:7777',
   version: '2.14.6',
   region: 'EU-West · Frankfurt',
   services: [

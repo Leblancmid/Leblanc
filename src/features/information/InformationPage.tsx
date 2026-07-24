@@ -30,7 +30,7 @@ export function InformationPage() {
       <SectionHeading
         eyebrow="About Leblanc"
         title="Information"
-        description="Everything a member needs to know about Leblanc  — from getting in, to buying and selling, to who to ask when something's unclear."
+        description="Everything you need to know about trading with Leblanc — verified identity, proof of trades, and where to find Leblanc online."
       />
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -96,9 +96,9 @@ export function InformationPage() {
               </div>
             </div>
             <p className="p-5 text-sm leading-relaxed text-ink-300">
-              Three of the largest trades ever brokered through the house — Arrow St (Lv. 793),
-              Venecos St (Lv. 852), and Shiroe St (Lv. 812) — each recorded as the biggest trade in
-              their history.
+              The highest trade in Rucoy history — three accounts secured in a single deal:
+              the server's Top 1 Melee, Top 4 Distance, and Top 10 Mage, together worth €9,000.
+              Arrow St, Venecos St, and Shiroe St all changed hands through Leblanc way ba.
             </p>
           </Card>
         </section>

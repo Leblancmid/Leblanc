@@ -16,14 +16,14 @@ export function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink-600 px-4 py-1.5 text-xs uppercase tracking-widest text-gold-300">
-              Members by introduction only
+              Trusted middleman, verified identity
             </span>
             <h1 className="mt-6 font-display text-5xl leading-[1.1] text-ink-50 sm:text-6xl">
               Welcome to <span className="text-gold-400">Leblanc</span>
             </h1>
             <p className="mt-5 text-balance text-lg text-ink-300">
-              A private house for rare listings, quiet arrangements, and the small print that
-              keeps everyone honest. Step in, look around, and speak to the house when you're
+              A trusted middleman for rare accounts and honest trades — no bots, no resellers,
+              just Leblanc keeping every deal straight. Look around, then reach out when you're
               ready.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -52,7 +52,7 @@ export function HomePage() {
             <SectionHeading
               eyebrow="Featured"
               title="Recently listed"
-              description="A small selection of what's currently for sale within the house."
+              description="A small selection of what's currently up for trade."
             />
             <Link
               to="/for-sale"
@@ -84,12 +84,12 @@ export function HomePage() {
             {[
               {
                 title: 'For Sale',
-                description: 'Melee, distance, and magic builds, leveled and vetted by the house.',
+                description: 'Melee, distance, and magic builds, all vetted personally by Leblanc.',
                 to: '/for-sale',
               },
               {
                 title: 'Information',
-                description: 'House guidelines, membership terms, and frequently asked questions.',
+                description: 'Verified identity, trade highlights, and where to find Leblanc.',
                 to: '/information',
               },
               {
