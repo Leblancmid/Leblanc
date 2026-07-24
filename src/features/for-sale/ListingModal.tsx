@@ -5,12 +5,6 @@ import { Button } from '@/components/ui/Button'
 import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
 
-const currency = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
-})
-
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
@@ -39,14 +33,13 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
         </span>
       }
       footer={
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-2xl font-medium text-gold-300">{currency.format(listing.price)}</p>
+        <div className="flex justify-end">
           <Button onClick={() => onInquire(listing)}>Inquire with seller</Button>
         </div>
       }
     >
       <div className="flex flex-col gap-5">
-        <ListingThumbnail listing={listing} size="hero" showPrice={false} className="rounded-lg" />
+        <ListingThumbnail listing={listing} size="hero" className="rounded-lg" />
 
         <p className="text-sm leading-relaxed text-ink-300">{listing.description}</p>
 

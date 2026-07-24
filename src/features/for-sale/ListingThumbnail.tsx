@@ -9,25 +9,13 @@ const categoryIcon: Record<Listing['category'], LucideIcon> = {
   Magic: Wand2,
 }
 
-const currency = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
-})
-
 interface ListingThumbnailProps {
   listing: Listing
   size?: 'card' | 'hero'
-  showPrice?: boolean
   className?: string
 }
 
-export function ListingThumbnail({
-  listing,
-  size = 'card',
-  showPrice = true,
-  className,
-}: ListingThumbnailProps) {
+export function ListingThumbnail({ listing, size = 'card', className }: ListingThumbnailProps) {
   const Icon = categoryIcon[listing.category]
 
   return (
@@ -73,14 +61,6 @@ export function ListingThumbnail({
       <div className="absolute right-3 top-3">
         <Badge tone="gold">{listing.category}</Badge>
       </div>
-
-      {showPrice && (
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-transparent px-4 pb-3 pt-10">
-          <p className={cn('font-medium text-gold-300', size === 'card' ? 'text-lg' : 'text-2xl')}>
-            {currency.format(listing.price)}
-          </p>
-        </div>
-      )}
     </div>
   )
 }
