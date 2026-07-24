@@ -1,4 +1,4 @@
-import { Server, User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
+import { User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { Button } from '@/components/ui/Button'
 import type { Listing } from '@/types'
@@ -24,13 +24,6 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
       isOpen={Boolean(listing)}
       onClose={onClose}
       size="lg"
-      title={listing.title}
-      description={
-        <span className="flex items-center gap-1.5">
-          <Server className="size-3.5" />
-          {listing.server}
-        </span>
-      }
       footer={
         <div className="flex justify-end">
           <Button onClick={() => onInquire(listing)}>Inquire with seller</Button>
@@ -39,8 +32,6 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
     >
       <div className="flex flex-col gap-5">
         <ListingThumbnail listing={listing} size="hero" showSlots className="rounded-lg" />
-
-        <p className="text-sm leading-relaxed text-ink-300">{listing.description}</p>
 
         <div className="grid grid-cols-2 gap-4 rounded-lg border border-ink-700 bg-ink-800/40 p-4 text-sm">
           <div className="flex items-center gap-2 text-ink-300">
