@@ -37,13 +37,6 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <span className="flex items-center gap-1.5 rounded-full border border-ink-600 px-3 py-1.5 text-xs text-ink-300">
-            <Circle className="size-2 fill-emerald-400 text-emerald-400" />
-            Network online
-          </span>
-        </div>
-
         <button
           type="button"
           onClick={() => setMobileOpen((v) => !v)}
