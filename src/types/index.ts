@@ -10,7 +10,6 @@ export interface Listing {
   seller: string
   standing: string
   description: string
-  tags: string[]
   featured?: boolean
   postedAt: string
   image?: string

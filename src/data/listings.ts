@@ -12,7 +12,6 @@ export const listings: Listing[] = [
     standing: 'Never banned, clean history',
     description:
       'A maxed warrior built for endgame raids, decked in a full epic gear set with a matching legendary greatsword. Guild bank access and a spotless ban-free history included.',
-    tags: ['Full epic gear', 'Legendary weapon', 'Guild access'],
     featured: true,
     postedAt: '2026-07-18',
   },
@@ -27,7 +26,6 @@ export const listings: Listing[] = [
     standing: 'Never banned, clean history',
     description:
       'A max-prestige archer with a full legendary quiver set and the rarest bow skin from the current season. Every major achievement in the game is unlocked on this account.',
-    tags: ['Max prestige', 'Legendary quiver', 'Rare bow skin'],
     featured: true,
     postedAt: '2026-07-15',
   },
@@ -42,7 +40,6 @@ export const listings: Listing[] = [
     standing: 'Never banned, clean history',
     description:
       'A raid-ready sorcerer with a complete endgame spellbook and a full set of resistance gear for the current tier of content.',
-    tags: ['Endgame ready', 'Full spellbook', 'Resistance gear'],
     featured: true,
     postedAt: '2026-07-10',
   },
@@ -57,7 +54,6 @@ export const listings: Listing[] = [
     standing: 'Verified, no bans',
     description:
       'A battle-tested berserker with a heavy PvP loadout and a deep arena rating. Comes with two rare mounts and a full set of enchanted runes.',
-    tags: ['PvP ready', 'Rare mounts', 'Enchanted runes'],
     postedAt: '2026-07-12',
   },
   {
@@ -71,7 +67,6 @@ export const listings: Listing[] = [
     standing: 'Verified, no bans',
     description:
       'Entirely solo-farmed from level one, this ranger has a tidy inventory and a reliable set of crafted gear ready for group content.',
-    tags: ['Solo farmed', 'Crafted gear', 'Group ready'],
     postedAt: '2026-07-05',
   },
   {
@@ -85,7 +80,6 @@ export const listings: Listing[] = [
     standing: 'Verified, no bans',
     description:
       "A dedicated support priest with a strong healing rotation and every major utility spell unlocked. Well suited to a guild's regular raid team.",
-    tags: ['Support build', 'Utility unlocked'],
     postedAt: '2026-06-30',
   },
   {
@@ -99,7 +93,6 @@ export const listings: Listing[] = [
     standing: 'Clean record, email bound',
     description:
       "A guild officer knight with tank-spec gear and a full raid clear history. Sold with the account's guild rank intact, subject to guild leadership approval.",
-    tags: ['Tank spec', 'Raid cleared', 'Guild rank'],
     postedAt: '2026-06-28',
   },
   {
@@ -113,7 +106,6 @@ export const listings: Listing[] = [
     standing: 'Clean record',
     description:
       'A dependable gunner build at a fair price, with enough gear to jump straight into mid-tier content without a fresh grind.',
-    tags: ['Budget pick', 'Mid-tier ready'],
     postedAt: '2026-06-22',
   },
   {
@@ -127,7 +119,6 @@ export const listings: Listing[] = [
     standing: 'Clean record, email bound',
     description:
       'A well-geared mage with a standout collection of rare cosmetic skins gathered across several limited-time events.',
-    tags: ['Rare skins', 'Well geared'],
     postedAt: '2026-07-01',
   },
   {
@@ -141,7 +132,6 @@ export const listings: Listing[] = [
     standing: 'Never banned, minor reports',
     description:
       'A well-rounded paladin with a rare mount bundle collected over three seasons, plus a full set of seasonal cosmetic armor.',
-    tags: ['Rare mounts', 'Seasonal cosmetics', 'Well-rounded'],
     postedAt: '2026-07-08',
   },
   {
@@ -155,7 +145,6 @@ export const listings: Listing[] = [
     standing: 'Never banned, clean history',
     description:
       'Comes with a matched pair of legendary bows from two separate seasonal events, plus a full set of stealth-focused armor.',
-    tags: ['Twin legendaries', 'Stealth armor'],
     postedAt: '2026-06-15',
   },
   {
@@ -169,7 +158,6 @@ export const listings: Listing[] = [
     standing: 'Fresh account, unflagged',
     description:
       'A PvE-focused sorcerer with a tidy rotation and enough gear to comfortably clear normal-mode content.',
-    tags: ['PvE focused', 'Normal mode ready'],
     postedAt: '2026-06-26',
   },
   {
@@ -183,7 +171,6 @@ export const listings: Listing[] = [
     standing: 'Fresh account, unflagged',
     description:
       'A light, beginner-friendly archer with the early quest lines cleared and just enough gear to skip the slowest part of the climb.',
-    tags: ['Beginner friendly', 'Quests cleared'],
     postedAt: '2026-06-10',
   },
   {
@@ -197,7 +184,6 @@ export const listings: Listing[] = [
     standing: 'Fresh account, unflagged',
     description:
       'An early-game berserker with a clean slate and a modest head start on gear. Good foundation for a new main without the early grind.',
-    tags: ['Early game', 'Clean slate', 'Good starter'],
     postedAt: '2026-07-14',
   },
 ]

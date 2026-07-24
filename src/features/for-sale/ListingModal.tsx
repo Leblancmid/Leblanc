@@ -1,9 +1,15 @@
 import { Server, User, CalendarDays, ShieldCheck, Star } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
-import { Badge } from '@/components/ui/Badge'
+import { Badge, type BadgeTone } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import type { Listing } from '@/types'
+import type { Listing, ListingCategory } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
+
+const categoryTone: Record<ListingCategory, BadgeTone> = {
+  Melee: 'blue',
+  Magic: 'purple',
+  Distance: 'green',
+}
 
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
@@ -63,11 +69,8 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {listing.tags.map((tag) => (
-            <Badge key={tag} tone="neutral">
-              {tag}
-            </Badge>
-          ))}
+          <Badge tone={categoryTone[listing.category]}>{listing.category} Ring</Badge>
+          <Badge tone={categoryTone[listing.category]}>{listing.category} Neck</Badge>
         </div>
       </div>
     </Modal>
