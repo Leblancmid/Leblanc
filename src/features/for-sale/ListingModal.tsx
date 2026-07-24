@@ -1,14 +1,9 @@
-import { Car, Building2, Sparkles, MapPin, User, CalendarDays, Tag } from 'lucide-react'
+import { MapPin, User, CalendarDays, Tag } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import type { Listing } from '@/types'
-
-const categoryIcon = {
-  Vehicle: Car,
-  Property: Building2,
-  Service: Sparkles,
-} as const
+import { ListingThumbnail } from './ListingThumbnail'
 
 const currency = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -30,7 +25,6 @@ interface ListingModalProps {
 
 export function ListingModal({ listing, onClose, onInquire }: ListingModalProps) {
   if (!listing) return null
-  const Icon = categoryIcon[listing.category]
 
   return (
     <Modal
@@ -52,12 +46,7 @@ export function ListingModal({ listing, onClose, onInquire }: ListingModalProps)
       }
     >
       <div className="flex flex-col gap-5">
-        <div className="flex items-center justify-between">
-          <span className="flex size-12 items-center justify-center rounded-lg border border-ink-600 bg-ink-800 text-gold-400">
-            <Icon className="size-6" />
-          </span>
-          <Badge tone="gold">{listing.category}</Badge>
-        </div>
+        <ListingThumbnail listing={listing} size="hero" showPrice={false} className="rounded-lg" />
 
         <p className="text-sm leading-relaxed text-ink-300">{listing.description}</p>
 

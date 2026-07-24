@@ -12,6 +12,7 @@ export interface Listing {
   tags: string[]
   featured?: boolean
   postedAt: string
+  image?: string
 }
 
 export interface ServiceStatus {

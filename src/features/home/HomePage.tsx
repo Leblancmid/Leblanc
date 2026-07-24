@@ -1,25 +1,13 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Car, Building2, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
 import { Card } from '@/components/ui/Card'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { Badge } from '@/components/ui/Badge'
 import { StatBlock } from './StatBlock'
 import { listings } from '@/data/listings'
-
-const categoryIcon = {
-  Vehicle: Car,
-  Property: Building2,
-  Service: Sparkles,
-} as const
+import { ListingThumbnail } from '@/features/for-sale/ListingThumbnail'
 
 const featured = listings.filter((l) => l.featured).slice(0, 3)
-
-const currency = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0,
-})
 
 export function HomePage() {
   return (
@@ -76,35 +64,26 @@ export function HomePage() {
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((listing) => {
-              const Icon = categoryIcon[listing.category]
-              return (
-                <Card
-                  key={listing.id}
-                  interactive
-                  className="flex flex-col p-5 animate-slide-up"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="flex size-10 items-center justify-center rounded-lg border border-ink-600 bg-ink-800 text-gold-400">
-                      <Icon className="size-5" />
-                    </span>
-                    <Badge tone="gold">{listing.category}</Badge>
-                  </div>
-                  <h3 className="mt-4 text-lg font-medium text-ink-100">{listing.title}</h3>
-                  <p className="mt-1 text-sm text-ink-400">{listing.location}</p>
-                  <p className="mt-4 text-xl font-medium text-gold-300">
-                    {currency.format(listing.price)}
-                  </p>
+            {featured.map((listing) => (
+              <Card
+                key={listing.id}
+                interactive
+                className="flex flex-col overflow-hidden animate-slide-up"
+              >
+                <ListingThumbnail listing={listing} />
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="text-lg font-medium text-ink-100">{listing.title}</h3>
+                  <p className="mt-1 flex-1 text-sm text-ink-400">{listing.location}</p>
                   <Link
                     to="/for-sale"
-                    className="mt-4 flex items-center gap-1.5 text-sm text-ink-300 transition-colors hover:text-gold-300"
+                    className="mt-4 flex items-center gap-1.5 self-end text-sm text-ink-300 transition-colors hover:text-gold-300"
                   >
                     View details
                     <ArrowRight className="size-3.5" />
                   </Link>
-                </Card>
-              )
-            })}
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
