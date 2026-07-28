@@ -94,6 +94,7 @@ export function HomePage() {
             <DiscordServerCard
               name={SERVER_DISCORD_LABEL}
               href={SERVER_DISCORD_URL}
+              iconSrc="/asian-market.svg"
               online={450}
               members={5000}
               established="Sep 2023"

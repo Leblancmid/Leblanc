@@ -20,9 +20,9 @@ export function YoutubeChannelCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block overflow-hidden rounded-lg border border-ink-700 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
+      className="flex h-full flex-col overflow-hidden rounded-lg border border-ink-700 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
     >
-      <img src={bannerSrc} alt="" className="aspect-[3/1] w-full object-cover" />
+      <img src={bannerSrc} alt="" className="min-h-32 w-full flex-1 object-cover" />
 
       <div className="flex items-center gap-3 px-4 pb-4">
         <img

@@ -5,8 +5,8 @@ import { Logo } from './Logo'
 import { cn } from '@/lib/cn'
 
 const navItems = [
-  { label: 'For Sale', to: '/for-sale' },
   { label: 'Information', to: '/information' },
+  { label: 'For Sale', to: '/for-sale' },
 ]
 
 export function Navbar() {

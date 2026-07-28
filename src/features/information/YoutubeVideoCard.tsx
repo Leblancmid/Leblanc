@@ -20,7 +20,7 @@ export function YoutubeVideoCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block overflow-hidden rounded-lg border border-ink-700 border-l-4 border-l-gold-500 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
+      className="flex h-full flex-col overflow-hidden rounded-lg border border-ink-700 border-l-4 border-l-gold-500 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
     >
       <div className="p-4 pb-3">
         <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">YouTube</p>
