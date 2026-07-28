@@ -154,6 +154,7 @@ export function InformationPage() {
             members={2000}
             established="Nov 2024"
             bannerClassName="bg-gradient-to-b from-emerald-500 to-emerald-700"
+            bannerIcon={Users}
           />
           <DiscordServerCard
             name={SERVER_DISCORD_LABEL}
@@ -163,6 +164,7 @@ export function InformationPage() {
             members={5000}
             established="Sep 2023"
             bannerClassName="bg-gradient-to-b from-cyan-400 to-teal-600"
+            bannerIcon={Store}
           />
         </div>
       </section>

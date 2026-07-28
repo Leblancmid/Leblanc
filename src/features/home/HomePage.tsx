@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Users, Store } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
 import { Card } from '@/components/ui/Card'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -90,6 +90,7 @@ export function HomePage() {
               members={2000}
               established="Nov 2024"
               bannerClassName="bg-gradient-to-b from-emerald-500 to-emerald-700"
+              bannerIcon={Users}
             />
             <DiscordServerCard
               name={SERVER_DISCORD_LABEL}
@@ -99,6 +100,7 @@ export function HomePage() {
               members={5000}
               established="Sep 2023"
               bannerClassName="bg-gradient-to-b from-cyan-400 to-teal-600"
+              bannerIcon={Store}
             />
           </div>
         </div>
