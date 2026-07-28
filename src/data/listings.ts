@@ -60,11 +60,4 @@ export const listings: Listing[] = [
     level: 596,
     image: '/level-596.jpg',
   },
-  {
-    id: 'lb-415',
-    title: 'Magic Account — Lv. 415',
-    category: 'Magic',
-    level: 415,
-    image: '/level-415.jpg',
-  },
 ]
