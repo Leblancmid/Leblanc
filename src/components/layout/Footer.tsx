@@ -12,6 +12,10 @@ export function Footer() {
             <p className="mt-3 text-sm leading-relaxed text-ink-400">
               Looking for a trusted middleman, or have an inquiry? Reach out directly.
             </p>
+            <p className="mt-2 text-xs leading-relaxed text-ink-500">
+              Also making websites for businesses, projects, or anything else — payable in Rucoy
+              gold, $, or €.
+            </p>
             <div className="mt-3 flex flex-col gap-2">
               <a
                 href={DISCORD_URL}
