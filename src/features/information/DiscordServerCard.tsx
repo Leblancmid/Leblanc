@@ -37,7 +37,6 @@ export function DiscordServerCard({
           }}
         />
         <div aria-hidden className="absolute -right-6 -top-10 size-32 rounded-full bg-white/20 blur-3xl" />
-        <div aria-hidden className="absolute -bottom-8 -left-4 size-28 rounded-full bg-black/20 blur-2xl" />
         {BannerIcon && (
           <BannerIcon
             aria-hidden
@@ -45,11 +44,10 @@ export function DiscordServerCard({
             className="absolute -right-3 -top-3 size-24 text-white/15"
           />
         )}
-        <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-ink-900/50 to-transparent" />
       </div>
 
       <div className="px-4">
-        <div className="-mt-8 flex size-16 items-center justify-center overflow-hidden rounded-2xl border-4 border-ink-900 bg-ink-800">
+        <div className="relative z-10 -mt-8 flex size-16 items-center justify-center overflow-hidden rounded-2xl border-4 border-ink-900 bg-ink-800">
           {iconSrc ? (
             <img src={iconSrc} alt={name} className="size-full object-cover" />
           ) : (
