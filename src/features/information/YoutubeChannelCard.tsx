@@ -1,26 +1,41 @@
 interface YoutubeChannelCardProps {
   href: string
   name: string
-  tagline: string
-  subtext?: string
+  handle: string
+  subscribers?: string
   avatarSrc: string
+  bannerSrc: string
 }
 
-export function YoutubeChannelCard({ href, name, tagline, subtext, avatarSrc }: YoutubeChannelCardProps) {
+export function YoutubeChannelCard({
+  href,
+  name,
+  handle,
+  subscribers,
+  avatarSrc,
+  bannerSrc,
+}: YoutubeChannelCardProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-between gap-4 rounded-lg border border-ink-700 border-l-4 border-l-gold-500 bg-ink-800/40 p-4 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
+      className="block overflow-hidden rounded-lg border border-ink-700 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
     >
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">YouTube</p>
-        <p className="mt-1 font-medium text-gold-300">{name}</p>
-        <p className="mt-1 text-sm text-ink-300">{tagline}</p>
-        {subtext && <p className="text-sm text-ink-400">{subtext}</p>}
+      <img src={bannerSrc} alt="" className="aspect-[3/1] w-full object-cover" />
+
+      <div className="flex items-center gap-3 px-4 pb-4">
+        <img
+          src={avatarSrc}
+          alt={name}
+          className="-mt-7 size-14 shrink-0 rounded-full border-4 border-ink-900 object-cover"
+        />
+        <div className="pt-1">
+          <p className="font-medium text-ink-100">{name}</p>
+          <p className="text-sm text-ink-400">{handle}</p>
+          {subscribers && <p className="text-xs text-ink-500">{subscribers} subscribers</p>}
+        </div>
       </div>
-      <img src={avatarSrc} alt={name} className="size-16 shrink-0 rounded-lg object-cover" />
     </a>
   )
 }

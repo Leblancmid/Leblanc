@@ -3,9 +3,18 @@ interface YoutubeVideoCardProps {
   channelName: string
   title: string
   thumbnailSrc: string
+  views?: string
+  uploadedAgo?: string
 }
 
-export function YoutubeVideoCard({ href, channelName, title, thumbnailSrc }: YoutubeVideoCardProps) {
+export function YoutubeVideoCard({
+  href,
+  channelName,
+  title,
+  thumbnailSrc,
+  views,
+  uploadedAgo,
+}: YoutubeVideoCardProps) {
   return (
     <a
       href={href}
@@ -17,6 +26,13 @@ export function YoutubeVideoCard({ href, channelName, title, thumbnailSrc }: You
         <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">YouTube</p>
         <p className="mt-1 text-sm font-medium text-gold-300">{channelName}</p>
         <p className="mt-1 font-medium text-ink-100">{title}</p>
+        {(views || uploadedAgo) && (
+          <p className="mt-1 text-xs text-ink-500">
+            {views && `${views} views`}
+            {views && uploadedAgo && ' • '}
+            {uploadedAgo}
+          </p>
+        )}
       </div>
       <img src={thumbnailSrc} alt={title} className="aspect-video w-full object-cover" />
     </a>
