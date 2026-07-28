@@ -1,4 +1,4 @@
-import { ShieldAlert, PlayCircle, Users, Store, Trophy } from 'lucide-react'
+import { ShieldAlert, PlayCircle, Users, Store, Trophy, Flame } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
@@ -9,16 +9,18 @@ import {
   SERVER_DISCORD_URL,
   SERVER_DISCORD_LABEL,
   MOST_VIEWED_VIDEO_URL,
+  MOST_VIEWED_VIDEO_THUMBNAIL,
+  MOST_VIEWED_VIDEO_TITLE,
 } from '@/lib/links'
 import { DiscordServerCard } from './DiscordServerCard'
+import { YoutubeChannelCard } from './YoutubeChannelCard'
+import { YoutubeVideoCard } from './YoutubeVideoCard'
 
 const proofLinks = [
   { label: 'References', href: REFERENCES_DISCORD_URL, icon: Users },
   { label: SERVER_DISCORD_LABEL, href: SERVER_DISCORD_URL, icon: Store },
   { label: 'YouTube', href: YOUTUBE_URL, icon: PlayCircle },
 ]
-
-const youtubeLinks = [{ label: 'Most Viewed Video', href: MOST_VIEWED_VIDEO_URL }]
 
 export function InformationPage() {
   return (
@@ -132,23 +134,30 @@ export function InformationPage() {
           <PlayCircle className="size-5 text-gold-400" />
           Leblanc Youtube Account
         </h3>
-        <Card className="mt-5 p-5">
-          <ul className="space-y-2">
-            {youtubeLinks.map((link) => (
-              <li key={link.label} className="flex gap-2 text-sm text-ink-300">
-                <span className="mt-2 size-1 shrink-0 rounded-full bg-gold-500" />
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-gold-300"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Card>
+        <div className="mt-5">
+          <YoutubeChannelCard
+            href={YOUTUBE_URL}
+            name="Leblanc"
+            tagline="Most Trusted Midman in Rucoy"
+            subtext={`Discord Name: ${DISCORD_HANDLE}`}
+            avatarSrc="/leblancmid.png"
+          />
+        </div>
+      </section>
+
+      <section className="mt-14 pb-4">
+        <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
+          <Flame className="size-5 text-gold-400" />
+          Most Viewed Video
+        </h3>
+        <div className="mt-5">
+          <YoutubeVideoCard
+            href={MOST_VIEWED_VIDEO_URL}
+            channelName="Leblanc"
+            title={MOST_VIEWED_VIDEO_TITLE}
+            thumbnailSrc={MOST_VIEWED_VIDEO_THUMBNAIL}
+          />
+        </div>
       </section>
     </div>
   )

@@ -1,0 +1,24 @@
+interface YoutubeVideoCardProps {
+  href: string
+  channelName: string
+  title: string
+  thumbnailSrc: string
+}
+
+export function YoutubeVideoCard({ href, channelName, title, thumbnailSrc }: YoutubeVideoCardProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block overflow-hidden rounded-lg border border-ink-700 border-l-4 border-l-gold-500 bg-ink-800/40 transition-colors hover:border-ink-600 hover:bg-ink-800/60"
+    >
+      <div className="p-4 pb-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">YouTube</p>
+        <p className="mt-1 text-sm font-medium text-gold-300">{channelName}</p>
+        <p className="mt-1 font-medium text-ink-100">{title}</p>
+      </div>
+      <img src={thumbnailSrc} alt={title} className="aspect-video w-full object-cover" />
+    </a>
+  )
+}

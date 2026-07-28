@@ -17,7 +17,7 @@ export function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink-600 px-4 py-1.5 text-xs uppercase tracking-widest text-gold-300">
-              Trusted middleman, verified identity
+              Trusted middleman
             </span>
             <h1 className="mt-6 font-display text-5xl leading-[1.1] text-ink-50 sm:text-6xl">
               Welcome to <span className="text-gold-400">Leblanc Website</span>
