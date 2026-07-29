@@ -23,8 +23,9 @@ export function HomePage() {
               Welcome to <span className="text-gold-400">Leblanc Website</span>
             </h1>
             <p className="mt-5 text-balance text-lg text-ink-300">
-              A trusted middleman for top accounts and honest trades — no bots, just Leblanc
-              keeping every deal straight. Look around, then reach out when you're ready.
+              A trusted middleman for Rucoy accounts, gold, and items — with a €9,000 highest
+              trade on record. Also buying accounts level 600–800+, paid via Rucoy gold, Binance,
+              or PayPal.
             </p>
             <p className="mt-3 text-balance text-sm text-ink-400">
               Also building websites on the side — for businesses, projects, or anything else
