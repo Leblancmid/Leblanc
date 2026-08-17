@@ -65,6 +65,15 @@ const INITIAL_CONFIGS: CurrencyConfig[] = [
     resultColor: 'text-violet-400',
   },
   {
+    symbol: 'R$',
+    label: 'Brazilian Real',
+    code: 'BRL',
+    divisor: '1000000',
+    multiplier: '0.95',
+    operation: 'multiply',
+    resultColor: 'text-orange-400',
+  },
+  {
     symbol: '₱',
     label: 'Philippine Peso',
     code: 'PHP',
@@ -110,7 +119,9 @@ function CurrencyCard({
 
       <div className="flex flex-col items-center justify-center gap-1 border-b border-ink-700 px-4 py-6">
         {formatted ? (
-          <p className={`text-2xl font-bold tabular-nums tracking-tight ${config.resultColor}`}>
+          <p
+            className={`break-all text-center text-xl font-bold tabular-nums tracking-tight sm:text-2xl ${config.resultColor}`}
+          >
             {config.symbol}
             {formatted}
           </p>
@@ -174,7 +185,7 @@ export function GoldCalculator() {
         </p>
       </Card>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {configs.map((cfg, i) => (
           <CurrencyCard
             key={cfg.code}
