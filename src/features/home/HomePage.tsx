@@ -6,6 +6,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { listings } from '@/data/listings'
 import { ListingThumbnail } from '@/features/for-sale/ListingThumbnail'
 import { DiscordServerCard } from '@/features/information/DiscordServerCard'
+import { GoldCalculator } from '@/features/gold-calculator/GoldCalculator'
 import { REFERENCES_DISCORD_URL, SERVER_DISCORD_URL, SERVER_DISCORD_LABEL } from '@/lib/links'
 
 const featured = listings.filter((l) => l.featured).slice(0, 3)
@@ -103,6 +104,29 @@ export function HomePage() {
               bannerClassName="bg-gradient-to-b from-cyan-400 to-teal-600"
               bannerIcon={Store}
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-ink-700/60 px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Tools"
+              title="Gold Calculator"
+              description="Convert Rucoy gold into real-world currency using Leblanc's trade rates."
+            />
+            <Link
+              to="/gold-calculator"
+              className="flex items-center gap-1.5 text-sm font-medium text-gold-300 transition-colors hover:text-gold-200"
+            >
+              Open full calculator
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+
+          <div className="mt-10">
+            <GoldCalculator />
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { cn } from '@/lib/cn'
 const navItems = [
   { label: 'Information', to: '/information' },
   { label: 'For Sale', to: '/for-sale' },
+  { label: 'Gold Calculator', to: '/gold-calculator' },
 ]
 
 export function Navbar() {
