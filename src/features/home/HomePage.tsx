@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Users, Store } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
-import { Card } from '@/components/ui/Card'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { listings } from '@/data/listings'
-import { ListingThumbnail } from '@/features/for-sale/ListingThumbnail'
 import { DiscordServerCard } from '@/features/information/DiscordServerCard'
 import { GoldCalculator } from '@/features/gold-calculator/GoldCalculator'
+import { ListingsMarquee } from './ListingsMarquee'
 import { REFERENCES_DISCORD_URL, SERVER_DISCORD_URL, SERVER_DISCORD_LABEL } from '@/lib/links'
-
-const featured = listings.filter((l) => l.featured).slice(0, 3)
 
 export function HomePage() {
   return (
@@ -43,13 +40,13 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-ink-700/60 px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-6xl">
+      <section className="border-t border-ink-700/60 py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <SectionHeading
               eyebrow="Featured"
               title="Recently listed"
-              description="A small selection of what's currently up for trade."
+              description="Every account currently up for trade."
             />
             <Link
               to="/for-sale"
@@ -59,19 +56,10 @@ export function HomePage() {
               <ArrowRight className="size-4" />
             </Link>
           </div>
+        </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((listing) => (
-              <Card key={listing.id} interactive className="overflow-hidden animate-slide-up">
-                <Link
-                  to="/for-sale"
-                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400"
-                >
-                  <ListingThumbnail listing={listing} />
-                </Link>
-              </Card>
-            ))}
-          </div>
+        <div className="mt-10">
+          <ListingsMarquee listings={listings} />
         </div>
       </section>
 
