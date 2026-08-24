@@ -11,7 +11,7 @@ export function ListingsMarquee({ listings }: ListingsMarqueeProps) {
   const track = [...listings, ...listings]
 
   return (
-    <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
       <div className="flex w-max animate-marquee gap-5">
         {track.map((listing, i) => (
           <Card
