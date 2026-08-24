@@ -104,48 +104,52 @@ export function InformationPage() {
       </div>
 
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 pb-4">
-        <section className="flex flex-col">
-          <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-            <PlayCircle className="size-5 text-gold-400" />
-            Leblanc Youtube Account
-          </h3>
-          <div className="mt-5 h-full flex-1">
-            <YoutubeChannelCard
-              href={YOUTUBE_URL}
-              name="Leblanc"
-              handle="@SaintLeblanc"
-              subscribers="1.5K"
-              avatarSrc="/mikey.png"
-              bannerSrc="/saint-leblanc.jpg"
-            />
-          </div>
-        </section>
-
-        <section className="flex flex-col">
-          <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-            <Flame className="size-5 text-gold-400" />
-            Most Viewed Video
-          </h3>
-          <div className="mt-5 h-full flex-1">
-            <YoutubeVideoCard
-              href={MOST_VIEWED_VIDEO_URL}
-              channelName="Leblanc"
-              title={MOST_VIEWED_VIDEO_TITLE}
-              thumbnailSrc={MOST_VIEWED_VIDEO_THUMBNAIL}
-              views="80K"
-              uploadedAgo="2 years ago"
-            />
-          </div>
-        </section>
-      </div>
-
-      <section className="mt-14">
+      <section className="mt-14 rounded-2xl border border-ink-700/60 bg-ink-900/30 p-6 sm:p-8">
         <h3 className="flex items-center gap-2 text-lg font-medium text-ink-100">
-          <Store className="size-5 text-gold-400" />
-          Leblanc Server
+          <Users className="size-5 text-gold-400" />
+          Proof & Reach
         </h3>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <p className="mt-1 text-sm text-ink-400">
+          Active community, real trades, and a channel you can verify.
+        </p>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="flex flex-col">
+            <h4 className="flex items-center gap-2 text-sm font-medium text-ink-200">
+              <PlayCircle className="size-4 text-gold-400" />
+              Leblanc Youtube Account
+            </h4>
+            <div className="mt-3 h-full flex-1">
+              <YoutubeChannelCard
+                href={YOUTUBE_URL}
+                name="Leblanc"
+                handle="@SaintLeblanc"
+                subscribers="1.5K"
+                avatarSrc="/mikey.png"
+                bannerSrc="/saint-leblanc.jpg"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <h4 className="flex items-center gap-2 text-sm font-medium text-ink-200">
+              <Flame className="size-4 text-gold-400" />
+              Most Viewed Video
+            </h4>
+            <div className="mt-3 h-full flex-1">
+              <YoutubeVideoCard
+                href={MOST_VIEWED_VIDEO_URL}
+                channelName="Leblanc"
+                title={MOST_VIEWED_VIDEO_TITLE}
+                thumbnailSrc={MOST_VIEWED_VIDEO_THUMBNAIL}
+                views="80K"
+                uploadedAgo="2 years ago"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
           <DiscordServerCard
             name="Leblanc"
             href={REFERENCES_DISCORD_URL}

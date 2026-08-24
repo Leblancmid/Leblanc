@@ -1,6 +1,13 @@
+import { Link } from 'react-router-dom'
 import { MessageCircle, Phone } from 'lucide-react'
 import { Logo } from './Logo'
 import { DISCORD_URL, DISCORD_HANDLE, WHATSAPP_URL, WHATSAPP_NUMBER } from '@/lib/links'
+
+const exploreLinks = [
+  { label: 'For Sale', to: '/for-sale' },
+  { label: 'Information', to: '/information' },
+  { label: 'Gold Calculator', to: '/gold-calculator' },
+]
 
 export function Footer() {
   return (
@@ -37,10 +44,28 @@ export function Footer() {
               </a>
             </div>
           </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">Explore</p>
+            <div className="mt-3 flex flex-col gap-2">
+              {exploreLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm text-ink-300 transition-colors hover:text-gold-300"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-col-reverse items-center justify-between gap-4 border-t border-ink-700/80 pt-6 sm:flex-row">
+        <div className="mt-10 flex flex-col-reverse items-center justify-between gap-3 border-t border-ink-700/80 pt-6 sm:flex-row">
           <p className="text-xs text-ink-500">&copy; {new Date().getFullYear()} Leblanc. All rights reserved.</p>
+          <p className="text-xs text-ink-500">
+            €9,000 highest trade · 2,000+ Discord members · 1.5K YouTube subscribers
+          </p>
         </div>
       </div>
     </footer>

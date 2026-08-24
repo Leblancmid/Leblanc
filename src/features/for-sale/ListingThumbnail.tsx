@@ -33,11 +33,17 @@ export function ListingThumbnail({ listing, size = 'card', className }: ListingT
         )}
       >
         {listing.image ? (
-          <img
-            src={listing.image}
-            alt={listing.title}
-            className="absolute inset-0 size-full object-cover object-right"
-          />
+          <>
+            <img
+              src={listing.image}
+              alt={listing.title}
+              className="absolute inset-0 size-full object-cover object-right"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-ink-950/70 to-transparent"
+            />
+          </>
         ) : (
           <>
             <div
@@ -58,6 +64,14 @@ export function ListingThumbnail({ listing, size = 'card', className }: ListingT
               )}
             />
           </>
+        )}
+
+        {listing.featured && (
+          <div className="absolute bottom-2 left-2">
+            <Badge tone="gold" className="border-gold-500/50 bg-ink-950/90 backdrop-blur-sm">
+              Featured
+            </Badge>
+          </div>
         )}
       </div>
 
