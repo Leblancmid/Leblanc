@@ -12,7 +12,7 @@ export function ListingsMarquee({ listings }: ListingsMarqueeProps) {
 
   return (
     <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-      <div className="flex w-max animate-marquee gap-5 group-hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-marquee gap-5">
         {track.map((listing, i) => (
           <Card
             key={`${listing.id}-${i}`}

@@ -152,6 +152,10 @@
   animation: marquee 45s linear infinite;
 }
 
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
