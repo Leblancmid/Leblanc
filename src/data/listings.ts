@@ -9,6 +9,20 @@ export const listings: Listing[] = [
     image: '/level-450.jpg',
   },
   {
+    id: 'lb-512',
+    title: 'Distance Account — Lv. 512',
+    category: 'Distance',
+    level: 512,
+    image: '/level-512.jpg',
+  },
+  {
+    id: 'lb-561',
+    title: 'Distance Account — Lv. 561',
+    category: 'Distance',
+    level: 561,
+    image: '/level-561.jpg',
+  },
+  {
     id: 'lb-571',
     title: 'Distance Account — Lv. 571',
     category: 'Distance',
@@ -24,6 +38,13 @@ export const listings: Listing[] = [
     featured: true,
   },
   {
+    id: 'lb-580',
+    title: 'Magic Account — Lv. 580',
+    category: 'Magic',
+    level: 580,
+    image: '/level-580.jpg',
+  },
+  {
     id: 'lb-637',
     title: 'Distance Account — Lv. 637',
     category: 'Distance',
@@ -32,10 +53,17 @@ export const listings: Listing[] = [
   },
   {
     id: 'lb-644',
-    title: 'Distance Account — Lv. 644',
-    category: 'Distance',
+    title: 'Melee Account — Lv. 644',
+    category: 'Melee',
     level: 644,
     image: '/level-644.jpg',
+  },
+  {
+    id: 'lb-650',
+    title: 'Melee Account — Lv. 650',
+    category: 'Melee',
+    level: 650,
+    image: '/level-650.jpg',
   },
   {
     id: 'lb-688',
