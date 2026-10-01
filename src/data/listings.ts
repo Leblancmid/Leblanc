@@ -3,8 +3,8 @@ import type { Listing } from '@/types'
 export const listings: Listing[] = [
   {
     id: 'lb-422',
-    title: 'Distance Account — Lv. 422',
-    category: 'Distance',
+    title: 'Melee Account — Lv. 422',
+    category: 'Melee',
     level: 422,
     image: '/level-422.jpg',
   },
