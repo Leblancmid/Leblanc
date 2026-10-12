@@ -2,34 +2,6 @@ import type { Listing } from '@/types'
 
 export const listings: Listing[] = [
   {
-    id: 'lb-422',
-    title: 'Melee Account — Lv. 422',
-    category: 'Melee',
-    level: 422,
-    image: '/level-422.jpg',
-  },
-  {
-    id: 'lb-512',
-    title: 'Distance Account — Lv. 512',
-    category: 'Distance',
-    level: 512,
-    image: '/level-512.jpg',
-  },
-  {
-    id: 'lb-561',
-    title: 'Distance Account — Lv. 561',
-    category: 'Distance',
-    level: 561,
-    image: '/level-561.jpg',
-  },
-  {
-    id: 'lb-571',
-    title: 'Distance Account — Lv. 571',
-    category: 'Distance',
-    level: 571,
-    image: '/level-571.jpg',
-  },
-  {
     id: 'lb-579',
     title: 'Magic Account — Lv. 579',
     category: 'Magic',
@@ -38,11 +10,11 @@ export const listings: Listing[] = [
     featured: true,
   },
   {
-    id: 'lb-580',
-    title: 'Magic Account — Lv. 580',
+    id: 'lb-618',
+    title: 'Magic Account — Lv. 618',
     category: 'Magic',
-    level: 580,
-    image: '/level-580.jpg',
+    level: 618,
+    image: '/level-618.jpg',
   },
   {
     id: 'lb-644',
@@ -57,6 +29,13 @@ export const listings: Listing[] = [
     category: 'Melee',
     level: 650,
     image: '/level-650.jpg',
+  },
+  {
+    id: 'lb-660',
+    title: 'Distance Account — Lv. 660',
+    category: 'Distance',
+    level: 660,
+    image: '/level-660.jpg',
   },
   {
     id: 'lb-674',
