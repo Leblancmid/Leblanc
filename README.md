@@ -1,49 +1,46 @@
 # Leblanc
 
-A dark, noir-luxury marketplace front end — a private "house" for rare listings,
-member information, and network status.
+A dark, noir-luxury site for Leblanc — a trusted Rucoy middleman. It lists accounts
+for sale, converts gold to real currency, and gives buyers a way to verify Leblanc's
+identity before they trade.
 
 Built with React, TypeScript, Vite, and Tailwind CSS v4.
 
 ## Sections
 
-- **For Sale** — vehicles, properties, collectibles, and service retainers, with
-  category filtering, pagination, a listing detail modal, and an inquiry
-  confirmation flow.
-- **Information** — how the house works, membership guidelines, and an FAQ
-  accordion.
-- **Server** — live network status, connection details, service health, and a
-  connect confirmation flow.
+- **Home** — hero with the record trade, headline stats, an anti-impersonation
+  notice, services, featured listings, the gold calculator, and Discord communities.
+- **For Sale** — every account with its skill bars. Filter by build, sort by level,
+  and open a detail dialog. Filter, sort, and the open listing live in the URL
+  (`/for-sale?build=distance&listing=lb-684`), so links can be shared.
+- **Gold Calculator** — gold to USD / EUR / BRL / PHP. Accepts shorthand (`500m`,
+  `1.5b`, `250k`), and rates can be adjusted.
+- **Information** — identity verification, the highest trade, YouTube, and Discord.
 
-## Stack
+## Updating content
 
-- React 19 + TypeScript
-- Vite, with `@` aliased to `src/`
-- Tailwind CSS v4 (`@tailwindcss/vite`)
-- React Router
-- [lucide-react](https://lucide.dev/) for icons
+- `src/data/listings.ts` — accounts for sale. Copy `stats` and `hp` from the in-game
+  Stats screen (base values, without `+` bonuses). `price` is optional free text.
+- `src/data/site.ts` — the headline numbers (highest trade, subscribers, Discord
+  members) and the Discord communities. Every page reads these, so change them here.
+- `src/lib/links.ts` — Discord, WhatsApp, and YouTube links.
 
 ## Structure
 
 ```
 src/
-  components/
-    layout/       Navbar, Footer, Layout, Logo, ScrollToTop
-    ui/           Button, LinkButton, Badge, Card, SectionHeading
-    modals/       Base portal-based Modal
-    confirmation/ ConfirmDialog (async confirm + success state)
-    pagination/   Pagination
+  components/   layout (Navbar, Footer, Logo), ui (Button, Badge, Card, ...),
+                modals, pagination
   features/
-    home/         Landing page
-    for-sale/      Listing grid, detail modal, category filter
-    information/  Guidelines, steps, FAQ accordion
-    server/       Status card, service health rows
-    not-found/    404 page
-  hooks/          usePagination, useDisclosure, useLockBodyScroll,
-                  useEscapeKey, useClickOutside, useCopyToClipboard, useCountUp
-  data/           Mock listings, server status, guidelines/FAQ content
-  types/          Shared TypeScript types
-  lib/            cn() class-merging helper
+    home/           Landing page
+    for-sale/       Listing grid, card, skill bars, detail dialog
+    gold-calculator/
+    information/    Verification page, TrustNotice, CommunityCard, YouTube cards
+    not-found/
+  data/         listings + site-wide numbers
+  hooks/        usePagination, useEscapeKey, useClickOutside, useLockBodyScroll, ...
+  lib/          cn(), formatting, gold parsing, listing filter/sort helpers, links, nav
+  types/
 ```
 
 ## Getting started
@@ -55,5 +52,6 @@ npm run dev
 
 ```bash
 npm run build   # type-check + production build
+npm run lint
 npm run preview # preview the production build
 ```

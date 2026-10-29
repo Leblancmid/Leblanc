@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react'
+import { useId, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/cn'
@@ -24,6 +24,7 @@ const sizeClasses = {
 
 export function Modal({ isOpen, onClose, title, description, children, size = 'md', footer }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null)
+  const titleId = useId()
 
   useEscapeKey(isOpen, onClose)
   useClickOutside(panelRef, isOpen, onClose)
@@ -39,7 +40,7 @@ export function Modal({ isOpen, onClose, title, description, children, size = 'm
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={title ? 'modal-title' : undefined}
+        aria-labelledby={title ? titleId : undefined}
         className={cn(
           'relative w-full rounded-t-2xl border border-ink-600 bg-ink-900 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.7)] animate-scale-in sm:rounded-2xl',
           sizeClasses[size],
@@ -57,7 +58,7 @@ export function Modal({ isOpen, onClose, title, description, children, size = 'm
         {(title || description) && (
           <div className="border-b border-ink-700 px-6 py-5">
             {title && (
-              <h3 id="modal-title" className="pr-8 text-xl font-medium text-ink-100">
+              <h3 id={titleId} className="pr-8 text-xl font-medium text-ink-100">
                 {title}
               </h3>
             )}
