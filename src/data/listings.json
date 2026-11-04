@@ -1,0 +1,118 @@
+[
+    {
+        "id": "acc-46",
+        "category": "Distance",
+        "level": 721,
+        "stats": {
+            "melee": 527,
+            "distance": 657,
+            "magic": 339,
+            "defense": 593
+        },
+        "image": "/listings/acc-46.jpg",
+        "featured": true
+    },
+    {
+        "id": "acc-22",
+        "category": "Distance",
+        "level": 688,
+        "stats": {
+            "melee": 324,
+            "distance": 641,
+            "magic": 79,
+            "defense": 539
+        },
+        "image": "/listings/acc-22.jpg",
+        "featured": true
+    },
+    {
+        "id": "acc-43",
+        "category": "Distance",
+        "level": 684,
+        "stats": {
+            "melee": 487,
+            "distance": 646,
+            "magic": 450,
+            "defense": 567
+        },
+        "image": "/listings/acc-43.jpg",
+        "price": "2.5KKK",
+        "featured": true
+    },
+    {
+        "id": "acc-42",
+        "category": "Distance",
+        "level": 674,
+        "stats": {
+            "melee": 325,
+            "distance": 651,
+            "magic": 318,
+            "defense": 550
+        },
+        "image": "/listings/acc-42.jpg"
+    },
+    {
+        "id": "acc-45",
+        "category": "Melee",
+        "level": 672,
+        "stats": {
+            "melee": 629,
+            "distance": 503,
+            "magic": 350,
+            "defense": 562
+        },
+        "image": "/listings/acc-45.jpg",
+        "price": "1.6KKK"
+    },
+    {
+        "id": "acc-35",
+        "category": "Melee",
+        "level": 650,
+        "stats": {
+            "melee": 632,
+            "distance": 367,
+            "magic": 411,
+            "defense": 566
+        },
+        "image": "/listings/acc-35.jpg",
+        "price": "1.7KKK"
+    },
+    {
+        "id": "acc-3",
+        "category": "Distance",
+        "level": 644,
+        "stats": {
+            "melee": 336,
+            "distance": 648,
+            "magic": 330,
+            "defense": 552
+        },
+        "image": "/listings/acc-3.jpg"
+    },
+    {
+        "id": "acc-44",
+        "category": "Melee",
+        "level": 618,
+        "stats": {
+            "melee": 602,
+            "distance": 378,
+            "magic": 485,
+            "defense": 552
+        },
+        "image": "/listings/acc-44.jpg",
+        "price": "1.2KKK"
+    },
+    {
+        "id": "acc-47",
+        "category": "Distance",
+        "level": 561,
+        "stats": {
+            "melee": 37,
+            "distance": 583,
+            "magic": 17,
+            "defense": 478
+        },
+        "image": "/listings/acc-47.jpg",
+        "price": "700KK"
+    }
+]
