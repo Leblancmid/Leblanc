@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Check, Copy, Layers, MessageCircle, Phone, ShoppingCart, Tag } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { buttonClasses } from '@/components/ui/Button'
@@ -8,6 +8,7 @@ import { categoryMeta, listingReference, listingTitle } from '@/lib/listings'
 import type { Listing } from '@/types'
 import { SkillBars } from './SkillBars'
 import { InquiryForm } from './InquiryForm'
+import { trackListingView } from '@/lib/track'
 
 interface ListingModalProps {
   listing: Listing | null
@@ -18,6 +19,10 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
   const { copied, copy } = useCopyToClipboard()
   // Which listing the "I want this" form is open for (another listing starts closed)
   const [askingFor, setAskingFor] = useState<string | null>(null)
+
+  // Count the view for the owner's stats (once per tab per listing)
+  const listingId = listing?.id
+  useEffect(() => { if (listingId) trackListingView(listingId) }, [listingId])
 
   if (!listing) return null
   const asking = askingFor === listing.id

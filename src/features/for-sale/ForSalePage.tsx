@@ -16,6 +16,7 @@ import { cn } from '@/lib/cn'
 import type { Listing, ListingCategory } from '@/types'
 import { ListingGrid } from './ListingGrid'
 import { ListingModal } from './ListingModal'
+import { AlertForm } from './AlertForm'
 
 const filters: { label: string; value: ListingCategory | null }[] = [
   { label: 'All', value: null },
@@ -129,6 +130,10 @@ export function ForSalePage() {
             </Button>
           </div>
         )}
+      </div>
+
+      <div className="mt-10">
+        <AlertForm defaultCategory={category} />
       </div>
 
       <ListingModal listing={selected} onClose={() => updateParams({ listing: null })} />

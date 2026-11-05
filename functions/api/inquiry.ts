@@ -6,7 +6,7 @@
  * Secrets → DISCORD_WEBHOOK_URL). It never reaches the browser.
  */
 import listings from '../../src/data/listings.json'
-import { validateInquiry, whatsappDigits } from '../../src/lib/inquiry'
+import { contactMarkdown, validateInquiry } from '../../src/lib/inquiry'
 
 interface Env {
   DISCORD_WEBHOOK_URL?: string
@@ -61,9 +61,7 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
     return json({ message: 'This account was just sold or removed.', errors: { listingId: 'No longer listed.' } }, 422)
   }
 
-  const contact = inquiry.method === 'whatsapp'
-    ? `WhatsApp: [${inquiry.contact}](https://wa.me/${whatsappDigits(inquiry.contact)})`
-    : `Discord: **${inquiry.contact}**`
+  const contact = contactMarkdown(inquiry.method, inquiry.contact)
 
   const webhook = await fetch(env.DISCORD_WEBHOOK_URL, {
     method: 'POST',
