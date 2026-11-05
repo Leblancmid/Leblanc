@@ -1,4 +1,5 @@
-import { Check, Copy, Layers, MessageCircle, Phone, Tag } from 'lucide-react'
+import { useState } from 'react'
+import { Check, Copy, Layers, MessageCircle, Phone, ShoppingCart, Tag } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { buttonClasses } from '@/components/ui/Button'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
@@ -6,6 +7,7 @@ import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { categoryMeta, listingReference, listingTitle } from '@/lib/listings'
 import type { Listing } from '@/types'
 import { SkillBars } from './SkillBars'
+import { InquiryForm } from './InquiryForm'
 
 interface ListingModalProps {
   listing: Listing | null
@@ -14,8 +16,11 @@ interface ListingModalProps {
 
 export function ListingModal({ listing, onClose }: ListingModalProps) {
   const { copied, copy } = useCopyToClipboard()
+  // Which listing the "I want this" form is open for (another listing starts closed)
+  const [askingFor, setAskingFor] = useState<string | null>(null)
 
   if (!listing) return null
+  const asking = askingFor === listing.id
 
   const reference = listingReference(listing)
   const facts = [
@@ -45,25 +50,41 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              title="Message on WhatsApp"
+              aria-label="Message on WhatsApp"
               className={buttonClasses('secondary', 'md', 'flex-1 sm:flex-none')}
             >
               <Phone className="size-4" />
-              WhatsApp
+              <span className="hidden sm:inline">WhatsApp</span>
             </a>
             <a
               href={DISCORD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonClasses('primary', 'md', 'flex-1 sm:flex-none')}
+              title="Message on Discord"
+              aria-label="Message on Discord"
+              className={buttonClasses('secondary', 'md', 'flex-1 sm:flex-none')}
             >
               <MessageCircle className="size-4" />
-              Inquire on Discord
+              <span className="hidden sm:inline">Discord</span>
             </a>
+            {!asking && (
+              <button
+                type="button"
+                onClick={() => setAskingFor(listing.id)}
+                className={buttonClasses('primary', 'md', 'flex-[2] sm:flex-none')}
+              >
+                <ShoppingCart className="size-4" />
+                I want this
+              </button>
+            )}
           </div>
         </div>
       }
     >
       <div className="flex flex-col gap-5">
+        {asking && <InquiryForm key={listing.id} listing={listing} onCancel={() => setAskingFor(null)} />}
+
         {listing.image && (
           <a href={listing.image} target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
             <img
