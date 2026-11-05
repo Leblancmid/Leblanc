@@ -1,71 +1,9 @@
 import type { Listing } from '@/types'
+import data from './listings.json'
 
-export const listings: Listing[] = [
-  {
-    id: 'lb-579',
-    category: 'Magic',
-    level: 579,
-    hp: 8785,
-    stats: { melee: 324, distance: 278, magic: 641, defense: 536 },
-    image: '/level-579.jpg',
-    featured: true,
-  },
-  {
-    id: 'lb-618',
-    category: 'Melee',
-    level: 618,
-    hp: 9370,
-    stats: { melee: 602, distance: 378, magic: 485, defense: 552 },
-    image: '/level-618.jpg',
-  },
-  {
-    id: 'lb-644',
-    category: 'Distance',
-    level: 644,
-    hp: 9760,
-    stats: { melee: 336, distance: 648, magic: 330, defense: 552 },
-    image: '/level-644.jpg',
-  },
-  {
-    id: 'lb-650',
-    category: 'Melee',
-    level: 650,
-    hp: 9850,
-    stats: { melee: 632, distance: 367, magic: 411, defense: 566 },
-    image: '/level-650.jpg',
-  },
-  {
-    id: 'lb-660',
-    category: 'Distance',
-    level: 660,
-    hp: 10000,
-    stats: { melee: 346, distance: 617, magic: 272, defense: 547 },
-    image: '/level-660.jpg',
-  },
-  {
-    id: 'lb-674',
-    category: 'Distance',
-    level: 674,
-    hp: 10210,
-    stats: { melee: 325, distance: 651, magic: 318, defense: 550 },
-    image: '/level-674.jpg',
-  },
-  {
-    id: 'lb-684',
-    category: 'Distance',
-    level: 684,
-    hp: 10360,
-    stats: { melee: 487, distance: 646, magic: 450, defense: 567 },
-    image: '/level-684.jpg',
-    featured: true,
-  },
-  {
-    id: 'lb-688',
-    category: 'Distance',
-    level: 688,
-    hp: 10420,
-    stats: { melee: 324, distance: 641, magic: 79, defense: 539 },
-    image: '/level-688.jpg',
-    featured: true,
-  },
-]
+/**
+ * Accounts for sale. listings.json is written by the Budget Tracker app
+ * (Business → Listing Kit → Publish to website), so don't edit it by hand:
+ * the next publish replaces it.
+ */
+export const listings = data as Listing[]

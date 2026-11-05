@@ -9,7 +9,6 @@ export interface Listing {
   id: string
   category: ListingCategory
   level: number
-  hp?: number
   stats?: SkillStats
   featured?: boolean
   image?: string

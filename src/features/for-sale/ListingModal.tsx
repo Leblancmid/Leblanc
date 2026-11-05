@@ -1,10 +1,9 @@
-import { Check, Copy, Heart, Layers, MessageCircle, Phone, Tag } from 'lucide-react'
+import { Check, Copy, Layers, MessageCircle, Phone, Tag } from 'lucide-react'
 import { Modal } from '@/components/modals/Modal'
 import { buttonClasses } from '@/components/ui/Button'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { categoryMeta, listingReference, listingTitle } from '@/lib/listings'
-import { formatNumber } from '@/lib/format'
 import type { Listing } from '@/types'
 import { SkillBars } from './SkillBars'
 
@@ -21,7 +20,6 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
   const reference = listingReference(listing)
   const facts = [
     { icon: Layers, label: 'Level', value: String(listing.level) },
-    { icon: Heart, label: 'HP', value: listing.hp ? formatNumber(listing.hp) : '—' },
     { icon: Tag, label: 'Price', value: listing.price ?? 'On request' },
   ]
 
