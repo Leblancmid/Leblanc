@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useEffect, useMemo } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { SearchX } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
@@ -17,6 +17,8 @@ import type { Listing, ListingCategory } from '@/types'
 import { ListingGrid } from './ListingGrid'
 import { ListingModal } from './ListingModal'
 import { AlertForm } from './AlertForm'
+import { SellOfferForm } from './SellOfferForm'
+import { siteStats, trackingSinceLabel } from '@/data/published'
 
 const filters: { label: string; value: ListingCategory | null }[] = [
   { label: 'All', value: null },
@@ -33,6 +35,12 @@ export function ForSalePage() {
   const selected = listings.find((l) => l.id === params.get('listing')) ?? null
 
   const visible = useMemo(() => filterAndSortListings(listings, category, sort), [category, sort])
+
+  // "/for-sale#sell" (the home page's "Get an offer") jumps to the sell form
+  const { hash } = useLocation()
+  useEffect(() => {
+    if (hash === '#sell') document.getElementById('sell')?.scrollIntoView({ behavior: 'smooth' })
+  }, [hash])
 
   const updateParams = (changes: Record<string, string | null>) => {
     const next = new URLSearchParams(params)
@@ -57,6 +65,13 @@ export function ForSalePage() {
         title="Accounts for sale"
         description={`Melee, distance, and magic builds listed by Leblanc. Selling instead? Leblanc is buying Lv. ${BUYING_LEVEL_RANGE} accounts.`}
       />
+      {siteStats.accounts_sold > 0 && (
+        <p className="mt-3 text-sm text-ink-400">
+          <span className="font-semibold text-gold-300">{siteStats.accounts_sold} accounts sold</span>
+          {trackingSinceLabel && <> since {trackingSinceLabel}</>}
+          {siteStats.gold_trades > 0 && <> · {siteStats.gold_trades} gold trades</>}
+        </p>
+      )}
 
       <div className="mt-8 flex flex-col gap-3 border-y border-ink-700/80 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div
@@ -132,8 +147,9 @@ export function ForSalePage() {
         )}
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 flex flex-col gap-4">
         <AlertForm defaultCategory={category} />
+        <SellOfferForm />
       </div>
 
       <ListingModal listing={selected} onClose={() => updateParams({ listing: null })} />

@@ -52,3 +52,18 @@ CREATE TABLE IF NOT EXISTS alert_hits (
   listing_id TEXT NOT NULL,
   PRIMARY KEY (alert_id, listing_id)
 );
+
+-- Leads: "I want this", gold orders and accounts offered to you (status new → contacted → won / lost)
+CREATE TABLE IF NOT EXISTS leads (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  type       TEXT NOT NULL,
+  status     TEXT NOT NULL DEFAULT 'new',
+  name       TEXT NOT NULL,
+  method     TEXT NOT NULL,
+  contact    TEXT NOT NULL,
+  listing_id TEXT,
+  details    TEXT,
+  created_at INTEGER NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS leads_status ON leads (status, created_at);

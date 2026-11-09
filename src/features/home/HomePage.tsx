@@ -30,10 +30,17 @@ import { TrustNotice } from '@/features/information/TrustNotice'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { formatCompactPlus, formatOrList } from '@/lib/format'
 import { listingPath } from '@/lib/listings'
+import { siteStats, trackingSinceLabel } from '@/data/published'
+import { GoldRates } from '@/features/gold/GoldRates'
 
+// Accounts sold / gold trades come from the sales records (published from the Budget app)
 const stats = [
   { value: HIGHEST_TRADE, label: 'Highest trade' },
   { value: String(listings.length), label: 'Accounts for sale' },
+  ...(siteStats.accounts_sold > 0
+    ? [{ value: String(siteStats.accounts_sold), label: `Accounts sold${trackingSinceLabel ? ` since ${trackingSinceLabel}` : ''}` }]
+    : []),
+  ...(siteStats.gold_trades > 0 ? [{ value: String(siteStats.gold_trades), label: 'Gold trades done' }] : []),
   { value: formatCompactPlus(totalDiscordMembers), label: 'Discord members' },
   { value: YOUTUBE_SUBSCRIBERS, label: 'YouTube subscribers' },
 ]
@@ -56,7 +63,7 @@ const services: Service[] = [
     icon: HandCoins,
     title: 'Buying accounts',
     body: `Selling a Lv. ${BUYING_LEVEL_RANGE} account? Get paid in ${formatOrList(PAYMENT_METHODS)}.`,
-    cta: { label: 'Get an offer', href: DISCORD_URL },
+    cta: { label: 'Get an offer', to: '/for-sale#sell' },
   },
   {
     icon: Store,
@@ -143,7 +150,7 @@ export function HomePage() {
           </Link>
         </div>
 
-        <dl className="mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-ink-700 bg-ink-700 sm:grid-cols-4">
+        <dl className={`mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-ink-700 bg-ink-700 sm:grid-cols-3 ${stats.length > 4 ? 'lg:grid-cols-6' : 'lg:grid-cols-4'}`}>
           {stats.map((stat) => (
             <div
               key={stat.label}
@@ -236,7 +243,8 @@ export function HomePage() {
                 <ArrowRight className="size-4" />
               </Link>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col gap-6">
+              <GoldRates />
               <GoldCalculator />
             </div>
           </div>

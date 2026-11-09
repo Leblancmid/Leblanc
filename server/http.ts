@@ -74,6 +74,30 @@ export async function postToDiscord(env: Env, payload: Record<string, unknown>):
   return res.ok
 }
 
+/** Post to the private Discord channel with one file attached (e.g. a screenshot). */
+export async function postToDiscordWithFile(env: Env, payload: Record<string, unknown>,
+  file: { name: string; type: string; bytes: Uint8Array }): Promise<boolean> {
+  if (!env.DISCORD_WEBHOOK_URL) return false
+  const form = new FormData()
+  form.append('payload_json', JSON.stringify({
+    username: 'Leblanc Website', allowed_mentions: { parse: [] }, ...payload,
+    attachments: [{ id: 0, filename: file.name }],
+  }))
+  form.append('files[0]', new Blob([file.bytes as BlobPart], { type: file.type }), file.name)
+  const res = await fetch(env.DISCORD_WEBHOOK_URL, { method: 'POST', body: form })
+  return res.ok
+}
+
+/** What an image really is, from its first bytes (PNG / JPEG / WebP), or null. */
+export function imageKind(b: Uint8Array): { type: string; ext: string } | null {
+  if (b.length > 8 && b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47) return { type: 'image/png', ext: 'png' }
+  if (b.length > 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return { type: 'image/jpeg', ext: 'jpg' }
+  if (b.length > 12 && String.fromCharCode(...b.slice(0, 4)) === 'RIFF' && String.fromCharCode(...b.slice(8, 12)) === 'WEBP') {
+    return { type: 'image/webp', ext: 'webp' }
+  }
+  return null
+}
+
 /** Spam bots fill the hidden "website" field or submit within a couple of seconds. */
 export function looksLikeBot(raw: Record<string, unknown>): boolean {
   const openedAt = typeof raw.openedAt === 'number' ? raw.openedAt : 0

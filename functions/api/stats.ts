@@ -15,7 +15,7 @@ export const onRequestGet = async ({ request, env }: Context) => {
   const now = Date.now()
   const day = (daysAgo: number) => manilaDay(now - daysAgo * 86_400_000)
 
-  const [online, pages, daily, totals, unique, views, alerts] = await Promise.all([
+  const [online, pages, daily, totals, unique, views, alerts, leads] = await Promise.all([
     db.prepare('SELECT COUNT(*) AS n FROM presence WHERE last_seen > ?').bind(now - ONLINE_MS).first<{ n: number }>(),
     db.prepare('SELECT path, COUNT(*) AS n FROM presence WHERE last_seen > ? GROUP BY path ORDER BY n DESC LIMIT 5')
       .bind(now - ONLINE_MS).all<{ path: string | null; n: number }>(),
@@ -31,6 +31,9 @@ export const onRequestGet = async ({ request, env }: Context) => {
     ).bind(day(6)).all<{ listing_id: string; total: number; last7: number }>(),
     db.prepare('SELECT id, name, method, contact, category, min_level, max_level, created_at, expires_at FROM alerts WHERE expires_at > ? ORDER BY created_at DESC LIMIT 100')
       .bind(now).all(),
+    // Leads still waiting for a reply (table added later: missing table = none)
+    db.prepare("SELECT COUNT(*) AS n, MIN(created_at) AS oldest FROM leads WHERE status = 'new'").first<{ n: number; oldest: number | null }>()
+      .catch(() => null),
   ])
 
   const sum = (from: string, key: 'visitors' | 'pageviews') =>
@@ -48,5 +51,6 @@ export const onRequestGet = async ({ request, env }: Context) => {
     daily: daily.results,
     listing_views: views.results,
     alerts: alerts.results,
+    leads_new: { count: leads?.n ?? 0, oldest: leads?.oldest ?? null },
   })
 }

@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/Card'
 import { GOLD_INPUT_PATTERN, formatWithCommas, parseGoldAmount } from '@/lib/gold'
 import { formatCompact } from '@/lib/format'
 import { cn } from '@/lib/cn'
+import { gold } from '@/data/published'
 
 interface CurrencyConfig {
   symbol: string
@@ -54,6 +55,17 @@ const INITIAL_CONFIGS: CurrencyConfig[] = [
   },
 ]
 
+/**
+ * Start from Leblanc's published rates (Budget app → Listing Kit) when there are any:
+ * the first $ rate for USD, and the first ₱ rate for PHP (₱X per 1KK → 100/X × 10k gold per ₱1).
+ */
+const usdRate = gold.rates.find((r) => r.currency === 'USD')
+const phpRate = gold.rates.find((r) => r.currency === 'PHP')
+const STARTING_CONFIGS: CurrencyConfig[] = INITIAL_CONFIGS.map((c) =>
+  c.code === 'USD' && usdRate ? { ...c, multiplier: String(usdRate.per_kk) }
+  : c.code === 'PHP' && phpRate ? { ...c, multiplier: String(Number((100 / phpRate.per_kk).toFixed(2))) }
+  : c)
+
 const PRESETS = [10_000_000, 100_000_000, 500_000_000, 1_000_000_000]
 
 function convert(gold: number, config: CurrencyConfig): number | null {
@@ -83,12 +95,12 @@ const inputClasses =
 
 export function GoldCalculator() {
   const [gold, setGold] = useState('')
-  const [configs, setConfigs] = useState(INITIAL_CONFIGS)
+  const [configs, setConfigs] = useState(STARTING_CONFIGS)
   const [editingRates, setEditingRates] = useState(false)
 
   const goldNum = parseGoldAmount(gold)
   const invalid = gold.trim() !== '' && goldNum === null
-  const ratesChanged = configs.some((c, i) => c.multiplier !== INITIAL_CONFIGS[i].multiplier)
+  const ratesChanged = configs.some((c, i) => c.multiplier !== STARTING_CONFIGS[i].multiplier)
 
   const updateRate = (code: string, value: string) => {
     if (value !== '' && !/^\d*\.?\d*$/.test(value)) return
@@ -208,7 +220,7 @@ export function GoldCalculator() {
           {ratesChanged && (
             <button
               type="button"
-              onClick={() => setConfigs(INITIAL_CONFIGS)}
+              onClick={() => setConfigs(STARTING_CONFIGS)}
               className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs text-ink-300 transition-colors hover:text-gold-300"
             >
               <RotateCcw className="size-3.5" />
