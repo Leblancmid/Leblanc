@@ -1,5 +1,16 @@
 {
-  "rates": [],
-  "min_order_kk": null,
-  "note": null
+    "rates": [
+        {
+            "method": "Binance",
+            "currency": "USD",
+            "per_kk": 0.19
+        },
+        {
+            "method": "Paypal",
+            "currency": "USD",
+            "per_kk": 0.2
+        }
+    ],
+    "min_order_kk": null,
+    "note": null
 }
