@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check, LayoutDashboard, Lock, MessageCircle, Phone, Store, Wrench } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -6,6 +7,7 @@ import { Badge } from '@/components/ui/Badge'
 import { buttonClasses } from '@/components/ui/Button'
 import { websiteOffers, websiteProjects, type WebsiteOffer, type WebsiteProject } from '@/data/websites'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
+import { ScreenshotModal } from './ScreenshotModal'
 
 /** Websites and business systems built by Leblanc, and how to ask for one. */
 export function WebsitesPage() {
@@ -114,6 +116,7 @@ function OfferCard({ offer: o }: { offer: WebsiteOffer }) {
 }
 
 function ProjectCard({ project: p }: { project: WebsiteProject }) {
+  const [open, setOpen] = useState<number | null>(null)
   return (
     <Card id={p.id} className="scroll-mt-24 overflow-hidden">
       <div className="p-6">
@@ -138,17 +141,18 @@ function ProjectCard({ project: p }: { project: WebsiteProject }) {
 
       {p.images && (
         <div className="grid gap-px border-t border-ink-700 bg-ink-700 sm:grid-cols-2 lg:grid-cols-3">
-          {p.images.map((img) => (
-            <a key={img.src} href={img.src} target="_blank" rel="noopener noreferrer" className="group block bg-ink-950" title="Open full size">
+          {p.images.map((img, i) => (
+            <button key={img.src} type="button" onClick={() => setOpen(i)} className="group block bg-ink-950 text-left" title={`View ${img.caption}`}>
               <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-opacity group-hover:opacity-90" />
               <span className="block px-3 py-2.5">
                 <span className="block text-sm font-medium text-ink-100 group-hover:text-gold-300">{img.caption}</span>
                 <span className="mt-0.5 block text-xs leading-relaxed text-ink-400">{img.highlight}</span>
               </span>
-            </a>
+            </button>
           ))}
         </div>
       )}
+      {p.images && <ScreenshotModal project={p} images={p.images} index={open} onChange={setOpen} />}
 
       {p.note && (
         <p className="flex items-center gap-2 border-t border-ink-700 px-6 py-3 text-xs text-ink-400">
