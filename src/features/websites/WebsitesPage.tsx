@@ -91,10 +91,11 @@ function ProjectCard({ project: p }: { project: WebsiteProject }) {
       </div>
 
       {p.images && (
-        <div className="grid gap-px border-t border-ink-700 bg-ink-700 sm:grid-cols-2">
+        <div className="grid gap-px border-t border-ink-700 bg-ink-700 sm:grid-cols-2 lg:grid-cols-3">
           {p.images.map((img) => (
-            <a key={img.src} href={img.src} target="_blank" rel="noopener noreferrer" className="block bg-ink-950">
-              <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-opacity hover:opacity-90" />
+            <a key={img.src} href={img.src} target="_blank" rel="noopener noreferrer" className="group block bg-ink-950" title="Open full size">
+              <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-opacity group-hover:opacity-90" />
+              <span className="block px-3 py-2 text-xs text-ink-300 group-hover:text-gold-300">{img.caption}</span>
             </a>
           ))}
         </div>

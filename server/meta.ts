@@ -69,7 +69,7 @@ export function metaFor(url: URL): PageMeta {
     return {
       title: 'Websites by Leblanc | Online stores & business systems',
       description: 'Online stores, catalogues and business systems, built by Leblanc. This site is one of them. Payable in Rucoy gold, $ or €.',
-      image: '/websites/back-office-overview.png',
+      image: '/websites/overview.png',
       large: true,
     }
   }

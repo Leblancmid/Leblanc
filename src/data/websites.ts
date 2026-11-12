@@ -8,8 +8,8 @@ export interface WebsiteProject {
   title: string
   summary: string
   points: string[]
-  /** Screenshots in /public (amounts hidden) */
-  images?: { src: string; alt: string }[]
+  /** Screenshots in /public (sample data only) */
+  images?: { src: string; caption: string; alt: string }[]
   /** Shown under the project, e.g. why there are no screenshots */
   note?: string
   /** A page on this site that shows it */
@@ -42,10 +42,17 @@ export const websiteProjects: WebsiteProject[] = [
       'Monthly charts, reports and a weekly summary',
     ],
     images: [
-      { src: '/websites/back-office-overview.png', alt: 'Back office overview: net worth by month and where it is held, amounts hidden' },
-      { src: '/websites/back-office-wallets.png', alt: 'Back office wallets in two currencies, amounts hidden' },
+      { src: '/websites/overview.png', caption: 'Overview', alt: 'Overview: net worth by month, where it is held, and profit' },
+      { src: '/websites/business-stats.png', caption: 'Business stats', alt: 'Business stats: sold profit, revenue, cost and margin, with a weekly brief' },
+      { src: '/websites/business-sales.png', caption: 'Sales', alt: 'Sales: accounts for sale with price, cost and profit' },
+      { src: '/websites/business-listing-kit.png', caption: 'Listing Kit', alt: 'Listing Kit: the sale image built from the accounts for sale' },
+      { src: '/websites/business-leads.png', caption: 'Leads', alt: 'Leads: website requests and live visitor stats' },
+      { src: '/websites/business-report.png', caption: 'Report', alt: 'Business report: revenue against cost by month and profit by type' },
+      { src: '/websites/rucoy-summary.png', caption: 'Gold summary', alt: 'Gold summary: stash, trades and daily gold flow' },
+      { src: '/websites/rucoy-trades.png', caption: 'Trades', alt: 'Trades: open gold and cash trades with middleman fees' },
+      { src: '/websites/wallets.png', caption: 'Wallets', alt: 'Wallets in two currencies' },
     ],
-    note: 'Amounts are hidden in these screenshots.',
+    note: 'Screens shown with sample data, not real figures.',
   },
   {
     id: 'company-platform',
