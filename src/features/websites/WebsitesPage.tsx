@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Check, Lock, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, Check, LayoutDashboard, Lock, MessageCircle, Phone, Store, Wrench } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { buttonClasses } from '@/components/ui/Button'
-import { websiteOffers, websiteProjects, type WebsiteProject } from '@/data/websites'
+import { websiteOffers, websiteProjects, type WebsiteOffer, type WebsiteProject } from '@/data/websites'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 
 /** Websites and business systems built by Leblanc, and how to ask for one. */
@@ -21,12 +21,9 @@ export function WebsitesPage() {
         <ContactButtons />
       </div>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-3">
+      <div className="mt-10 grid gap-5 md:grid-cols-3">
         {websiteOffers.map((o) => (
-          <Card key={o.title} className="p-5">
-            <p className="font-medium text-ink-100">{o.title}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink-300">{o.detail}</p>
-          </Card>
+          <OfferCard key={o.id} offer={o} />
         ))}
       </div>
 
@@ -67,9 +64,58 @@ function ContactButtons() {
   )
 }
 
+const OFFER_ICONS = { store: Store, system: LayoutDashboard, fix: Wrench }
+
+/** One thing I take on: what's included, how long it usually takes, and examples on this page. */
+function OfferCard({ offer: o }: { offer: WebsiteOffer }) {
+  const Icon = OFFER_ICONS[o.icon]
+  return (
+    <Card className="flex flex-col p-6">
+      <span className="flex size-10 items-center justify-center rounded-lg bg-gold-500/10 text-gold-400">
+        <Icon className="size-5" />
+      </span>
+      <h3 className="mt-4 text-xl font-medium text-ink-100">{o.title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-ink-300">{o.pitch}</p>
+
+      <ul className="mt-5 space-y-2 text-sm text-ink-200">
+        {o.includes.map((item) => (
+          <li key={item} className="flex gap-2">
+            <Check className="mt-0.5 size-4 shrink-0 text-emerald-400" />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-6 border-t border-ink-700 pt-5 text-sm text-ink-300">
+        Typical timeline: <span className="font-medium text-ink-100">{o.timeline}</span>
+      </p>
+      {o.proof.length > 0 && (
+        <p className="mt-3 text-xs text-ink-400">
+          Built before:{' '}
+          {o.proof.map((p, i) => (
+            <span key={p.projectId}>
+              {i > 0 && ', '}
+              <a href={`#${p.projectId}`} className="text-ink-200 underline decoration-ink-500 underline-offset-2 hover:text-gold-300">
+                {p.label}
+              </a>
+            </span>
+          ))}
+        </p>
+      )}
+
+      <div className="mt-auto pt-6">
+        <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className={buttonClasses('primary', 'md', 'w-full justify-center')}>
+          Get a quote
+          <ArrowRight className="size-4" />
+        </a>
+      </div>
+    </Card>
+  )
+}
+
 function ProjectCard({ project: p }: { project: WebsiteProject }) {
   return (
-    <Card className="overflow-hidden">
+    <Card id={p.id} className="scroll-mt-24 overflow-hidden">
       <div className="p-6">
         <Badge tone="gold">{p.kind}</Badge>
         <h4 className="mt-3 font-display text-2xl text-ink-100">{p.title}</h4>

@@ -69,9 +69,62 @@ export const websiteProjects: WebsiteProject[] = [
   },
 ]
 
-/** What I take on */
-export const websiteOffers = [
-  { title: 'Online stores & catalogues', detail: 'Your products or listings, with orders and questions sent to your Discord, Messenger or email.' },
-  { title: 'Business systems', detail: 'Sales, stock, requests and approvals in one place for you and your team, with reports.' },
-  { title: 'Fixes & new features', detail: 'An existing site that is broken, slow or missing something.' },
+export interface WebsiteOffer {
+  id: string
+  icon: 'store' | 'system' | 'fix'
+  title: string
+  pitch: string
+  includes: string[]
+  timeline: string
+  /** Examples further down this page (ids of websiteProjects) */
+  proof: { label: string; projectId: string }[]
+}
+
+/** What I take on. Worded for Leblanc's own visitors (not copied from anywhere else). */
+export const websiteOffers: WebsiteOffer[] = [
+  {
+    id: 'store',
+    icon: 'store',
+    title: 'Online store or catalogue',
+    pitch: 'A quick site for what you sell, so buyers can browse and message you without a long chat first.',
+    includes: [
+      'Listings or products you can change any time',
+      'Requests delivered to your Discord, Messenger or email',
+      'See how many people visit, privately',
+      'No monthly hosting bill',
+    ],
+    timeline: '1–3 weeks',
+    proof: [{ label: 'This website', projectId: 'storefront' }],
+  },
+  {
+    id: 'system',
+    icon: 'system',
+    title: 'Business system',
+    pitch: 'Your sales, stock and money in one place instead of notes, spreadsheets and chat history.',
+    includes: [
+      'Stock, sales and profit that add up on their own',
+      'Logins for helpers, each seeing only what they should',
+      'Monthly reports you can export',
+      'Works on your phone, even offline',
+    ],
+    timeline: '4–8 weeks',
+    proof: [
+      { label: 'My back office', projectId: 'back-office' },
+      { label: 'A company platform', projectId: 'company-platform' },
+    ],
+  },
+  {
+    id: 'fix',
+    icon: 'fix',
+    title: 'Fixes and upgrades',
+    pitch: "A site you already have that's broken, slow, or missing something you need.",
+    includes: [
+      'Bugs found and fixed',
+      'Faster pages and safer logins',
+      'A new feature added properly',
+      'Backups, so nothing gets lost',
+    ],
+    timeline: 'Often a few days',
+    proof: [],
+  },
 ]
