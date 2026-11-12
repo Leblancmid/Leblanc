@@ -5,6 +5,7 @@ import { ForSalePage } from '@/features/for-sale/ForSalePage'
 import { InformationPage } from '@/features/information/InformationPage'
 import { GoldCalculatorPage } from '@/features/gold-calculator/GoldCalculatorPage'
 import { NotFoundPage } from '@/features/not-found/NotFoundPage'
+import { WebsitesPage } from '@/features/websites/WebsitesPage'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="for-sale" element={<ForSalePage />} />
           <Route path="gold-calculator" element={<GoldCalculatorPage />} />
           <Route path="information" element={<InformationPage />} />
+          <Route path="websites" element={<WebsitesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

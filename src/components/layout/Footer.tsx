@@ -23,7 +23,10 @@ export function Footer() {
             </p>
             <p className="mt-3 text-xs leading-relaxed text-ink-400">
               Also building websites for businesses and projects — this site is an example.
-              Payable in Rucoy gold, $, or €.
+              Payable in Rucoy gold, $, or €.{' '}
+              <Link to="/websites" className="text-gold-300 hover:text-gold-200">
+                See what I build
+              </Link>
             </p>
           </div>
 
