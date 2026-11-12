@@ -10,6 +10,7 @@
             "defense": 593
         },
         "image": "/listings/acc-46.jpg",
+        "price": "3.6KKK",
         "featured": true
     },
     {
@@ -62,7 +63,7 @@
             "defense": 562
         },
         "image": "/listings/acc-45.jpg",
-        "price": "1.6KKK"
+        "price": "1.5KKK"
     },
     {
         "id": "acc-35",
