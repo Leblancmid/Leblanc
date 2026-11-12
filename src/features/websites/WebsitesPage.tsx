@@ -141,7 +141,10 @@ function ProjectCard({ project: p }: { project: WebsiteProject }) {
           {p.images.map((img) => (
             <a key={img.src} href={img.src} target="_blank" rel="noopener noreferrer" className="group block bg-ink-950" title="Open full size">
               <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-opacity group-hover:opacity-90" />
-              <span className="block px-3 py-2 text-xs text-ink-300 group-hover:text-gold-300">{img.caption}</span>
+              <span className="block px-3 py-2.5">
+                <span className="block text-sm font-medium text-ink-100 group-hover:text-gold-300">{img.caption}</span>
+                <span className="mt-0.5 block text-xs leading-relaxed text-ink-400">{img.highlight}</span>
+              </span>
             </a>
           ))}
         </div>

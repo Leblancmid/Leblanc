@@ -9,7 +9,7 @@ export interface WebsiteProject {
   summary: string
   points: string[]
   /** Screenshots in /public (sample data only) */
-  images?: { src: string; caption: string; alt: string }[]
+  images?: { src: string; caption: string; highlight: string; alt: string }[]
   /** Shown under the project, e.g. why there are no screenshots */
   note?: string
   /** A page on this site that shows it */
@@ -42,15 +42,15 @@ export const websiteProjects: WebsiteProject[] = [
       'Monthly charts, reports and a weekly summary',
     ],
     images: [
-      { src: '/websites/overview.png', caption: 'Overview', alt: 'Overview: net worth by month, where it is held, and profit' },
-      { src: '/websites/business-stats.png', caption: 'Business stats', alt: 'Business stats: sold profit, revenue, cost and margin, with a weekly brief' },
-      { src: '/websites/business-sales.png', caption: 'Sales', alt: 'Sales: accounts for sale with price, cost and profit' },
-      { src: '/websites/business-listing-kit.png', caption: 'Listing Kit', alt: 'Listing Kit: the sale image built from the accounts for sale' },
-      { src: '/websites/business-leads.png', caption: 'Leads', alt: 'Leads: website requests and live visitor stats' },
-      { src: '/websites/business-report.png', caption: 'Report', alt: 'Business report: revenue against cost by month and profit by type' },
-      { src: '/websites/rucoy-summary.png', caption: 'Gold summary', alt: 'Gold summary: stash, trades and daily gold flow' },
-      { src: '/websites/rucoy-trades.png', caption: 'Trades', alt: 'Trades: open gold and cash trades with middleman fees' },
-      { src: '/websites/wallets.png', caption: 'Wallets', alt: 'Wallets in two currencies' },
+      { src: '/websites/overview.png', caption: 'Overview', highlight: 'Net worth and profit at a glance, month by month.', alt: 'Overview: net worth by month, where it is held, and profit' },
+      { src: '/websites/business-stats.png', caption: 'Business stats', highlight: 'Profit, margin and a weekly brief of what needs you.', alt: 'Business stats: sold profit, revenue, cost and margin, with a weekly brief' },
+      { src: '/websites/business-sales.png', caption: 'Sales', highlight: 'Every account with its price, cost and profit.', alt: 'Sales: accounts for sale with price, cost and profit' },
+      { src: '/websites/business-listing-kit.png', caption: 'Listing Kit', highlight: 'Automatic grid and prices: just add your screenshots.', alt: 'Listing Kit: the sale image built from the accounts for sale' },
+      { src: '/websites/business-leads.png', caption: 'Leads', highlight: 'Website requests in one inbox, plus live visitors.', alt: 'Leads: website requests and live visitor stats' },
+      { src: '/websites/business-report.png', caption: 'Report', highlight: 'Revenue vs cost by month, ready to export.', alt: 'Business report: revenue against cost by month and profit by type' },
+      { src: '/websites/rucoy-summary.png', caption: 'Gold summary', highlight: 'Stash, trades and every gold movement.', alt: 'Gold summary: stash, trades and daily gold flow' },
+      { src: '/websites/rucoy-trades.png', caption: 'Trades', highlight: 'Open trades with fees and due dates.', alt: 'Trades: open gold and cash trades with middleman fees' },
+      { src: '/websites/wallets.png', caption: 'Wallets', highlight: 'Every wallet in pesos and dollars, checked against the bank.', alt: 'Wallets in two currencies' },
     ],
     note: 'Screens shown with sample data, not real figures.',
   },
