@@ -37,12 +37,13 @@ export const websiteProjects: WebsiteProject[] = [
     summary:
       'The private system behind this store. It keeps sales and profit, gold stock and the money across eight wallets in two currencies in one place, and publishes the listings you see here in one click.',
     points: [
-      'Works on a phone, even offline; changes wait for my approval before they sync',
-      'Undo for any action, with a full history of who changed what',
+      'Made for the phone too: works offline, and alerts me the moment a request comes in',
+      'Logins for helpers, each seeing only their part, with undo and a full change history',
       'Monthly charts, reports and a weekly summary',
     ],
     images: [
       { src: '/websites/overview.png', caption: 'Overview', highlight: 'Net worth and profit at a glance, month by month.', alt: 'Overview: net worth by month, where it is held, and profit' },
+      { src: '/websites/phone-views.png', caption: 'On the phone', highlight: 'Every screen laid out for one-handed use, big numbers kept short.', alt: 'Four phone screens: gold summary, sales, report and wallets' },
       { src: '/websites/business-stats.png', caption: 'Business stats', highlight: 'Profit, margin and a weekly brief of what needs you.', alt: 'Business stats: sold profit, revenue, cost and margin, with a weekly brief' },
       { src: '/websites/business-sales.png', caption: 'Sales', highlight: 'Every account with its price, cost and profit.', alt: 'Sales: accounts for sale with price, cost and profit' },
       { src: '/websites/business-listing-kit.png', caption: 'Listing Kit', highlight: 'Automatic grid and prices: just add your screenshots.', alt: 'Listing Kit: the sale image built from the accounts for sale' },
@@ -51,6 +52,8 @@ export const websiteProjects: WebsiteProject[] = [
       { src: '/websites/rucoy-summary.png', caption: 'Gold summary', highlight: 'Stash, trades and every gold movement.', alt: 'Gold summary: stash, trades and daily gold flow' },
       { src: '/websites/rucoy-trades.png', caption: 'Trades', highlight: 'Open trades with fees and due dates.', alt: 'Trades: open gold and cash trades with middleman fees' },
       { src: '/websites/wallets.png', caption: 'Wallets', highlight: 'Every wallet in pesos and dollars, checked against the bank.', alt: 'Wallets in two currencies' },
+      { src: '/websites/users.png', caption: 'Users & access', highlight: 'Add helpers and choose exactly which parts each one sees.', alt: 'Users: people with their roles, access and when they were last active' },
+      { src: '/websites/logs.png', caption: 'Activity log', highlight: 'Who changed what, with the before and after.', alt: 'Activity log: sign-ins and edits with old and new values' },
     ],
     note: 'Screens shown with sample data, not real figures.',
   },
