@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/Card'
 import { categoryMeta } from '@/lib/listings'
 import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
+import { ShareButton } from './ShareButton'
 import { SkillBars } from './SkillBars'
 
 interface ListingCardProps {
@@ -13,7 +14,7 @@ interface ListingCardProps {
 
 export function ListingCard({ listing, to }: ListingCardProps) {
   return (
-    <Card interactive className="group overflow-hidden animate-slide-up">
+    <Card interactive className="group relative overflow-hidden animate-slide-up">
       <Link
         to={to}
         preventScrollReset
@@ -42,6 +43,8 @@ export function ListingCard({ listing, to }: ListingCardProps) {
           )}
         </div>
       </Link>
+      {/* Beside the link, not inside it, so tapping it never opens the listing */}
+      <ShareButton listing={listing} compact className="absolute right-3 top-3 z-10" />
     </Card>
   )
 }

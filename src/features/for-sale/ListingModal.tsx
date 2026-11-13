@@ -6,6 +6,7 @@ import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { categoryMeta, listingReference, listingTitle } from '@/lib/listings'
 import type { Listing } from '@/types'
+import { ShareButton } from './ShareButton'
 import { SkillBars } from './SkillBars'
 import { InquiryForm } from './InquiryForm'
 import { trackListingView } from '@/lib/track'
@@ -51,6 +52,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
             {copied ? 'Reference copied' : `Mention ${reference} when you message`}
           </button>
           <div className="flex gap-2">
+            <ShareButton listing={listing} up className="flex-1 sm:flex-none" />
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -77,7 +79,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
               <button
                 type="button"
                 onClick={() => setAskingFor(listing.id)}
-                className={buttonClasses('primary', 'md', 'flex-[2] sm:flex-none')}
+                className={buttonClasses('primary', 'md', 'flex-[2] whitespace-nowrap sm:flex-none')}
               >
                 <ShoppingCart className="size-4" />
                 I want this
