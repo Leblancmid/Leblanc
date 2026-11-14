@@ -14,19 +14,6 @@
         "featured": true
     },
     {
-        "id": "acc-22",
-        "category": "Distance",
-        "level": 688,
-        "stats": {
-            "melee": 324,
-            "distance": 641,
-            "magic": 79,
-            "defense": 539
-        },
-        "image": "/listings/acc-22.jpg",
-        "featured": true
-    },
-    {
         "id": "acc-43",
         "category": "Distance",
         "level": 684,
@@ -50,20 +37,20 @@
             "magic": 318,
             "defense": 550
         },
-        "image": "/listings/acc-42.jpg"
+        "image": "/listings/acc-42.jpg",
+        "featured": true
     },
     {
-        "id": "acc-45",
-        "category": "Melee",
-        "level": 672,
+        "id": "acc-50",
+        "category": "Magic",
+        "level": 658,
         "stats": {
-            "melee": 629,
-            "distance": 503,
-            "magic": 350,
-            "defense": 562
+            "melee": 226,
+            "distance": 323,
+            "magic": 629,
+            "defense": 555
         },
-        "image": "/listings/acc-45.jpg",
-        "price": "1.5KKK"
+        "image": "/listings/acc-50.jpg"
     },
     {
         "id": "acc-35",
