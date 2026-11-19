@@ -11,6 +11,7 @@
         },
         "image": "/listings/acc-43.jpg",
         "price": "2.5KKK",
+        "listed_at": "2026-10-01",
         "featured": true
     },
     {
@@ -24,6 +25,7 @@
             "defense": 550
         },
         "image": "/listings/acc-42.jpg",
+        "listed_at": "2026-10-01",
         "featured": true
     },
     {
@@ -37,6 +39,7 @@
             "defense": 566
         },
         "image": "/listings/acc-51.jpg",
+        "listed_at": "2026-11-19",
         "featured": true
     },
     {
@@ -49,7 +52,8 @@
             "magic": 629,
             "defense": 555
         },
-        "image": "/listings/acc-50.jpg"
+        "image": "/listings/acc-50.jpg",
+        "listed_at": "2026-11-14"
     },
     {
         "id": "acc-35",
@@ -62,7 +66,8 @@
             "defense": 566
         },
         "image": "/listings/acc-35.jpg",
-        "price": "1.7KKK"
+        "price": "1.7KKK",
+        "listed_at": "2026-09-02"
     },
     {
         "id": "acc-3",
@@ -74,7 +79,8 @@
             "magic": 330,
             "defense": 552
         },
-        "image": "/listings/acc-3.jpg"
+        "image": "/listings/acc-3.jpg",
+        "listed_at": "2026-07-01"
     },
     {
         "id": "acc-44",
@@ -87,7 +93,8 @@
             "defense": 552
         },
         "image": "/listings/acc-44.jpg",
-        "price": "1.2KKK"
+        "price": "1.2KKK",
+        "listed_at": "2026-10-09"
     },
     {
         "id": "acc-47",
@@ -100,6 +107,7 @@
             "defense": 478
         },
         "image": "/listings/acc-47.jpg",
-        "price": "650KK"
+        "price": "650KK",
+        "listed_at": "2026-10-14"
     }
 ]
