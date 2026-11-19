@@ -25,3 +25,12 @@ export function formatWithCommas(raw: string): string {
   const stripped = raw.replace(/,/g, '')
   return stripped.replace(/^\d+/, (digits) => digits.replace(/\B(?=(\d{3})+(?!\d))/g, ','))
 }
+
+/** What someone typed as an amount, in KK: "500kk", "1.5kkk", or a bare "500" (taken as KK). */
+export function amountInKk(raw: string): number | null {
+  const t = raw.trim()
+  if (!t) return null
+  if (/^\d+(\.\d+)?$/.test(t.replace(/,/g, ''))) return Number(t.replace(/,/g, ''))
+  const g = parseGoldAmount(t)
+  return g ? g / 1_000_000 : null
+}

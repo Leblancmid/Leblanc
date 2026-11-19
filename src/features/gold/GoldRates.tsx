@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { Coins } from 'lucide-react'
+import { Coins, HandCoins } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { gold } from '@/data/published'
 import { formatKk, formatRate } from '@/lib/orders'
 import { GoldOrderForm } from './GoldOrderForm'
+import { SellGoldForm } from './SellGoldForm'
 
-/** Leblanc's current gold rates (published from the Budget app) and an "Order gold" form. */
+/** Leblanc's current gold rates (published from the Budget app), an "Order gold" form, and "Sell gold". */
 export function GoldRates() {
   const [ordering, setOrdering] = useState(false)
+  const [selling, setSelling]   = useState(false)
   if (gold.rates.length === 0) return null
 
   return (
@@ -36,6 +38,21 @@ export function GoldRates() {
       {ordering
         ? <GoldOrderForm onCancel={() => setOrdering(false)} />
         : <Button onClick={() => setOrdering(true)} className="self-start"><Coins className="size-4" /> Order gold</Button>}
+
+      {/* The other way: they have gold and want to sell it */}
+      <div className="flex flex-col gap-3 border-t border-ink-700 pt-4">
+        {selling ? (
+          <SellGoldForm onCancel={() => setSelling(false)} />
+        ) : (
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="font-medium text-ink-100">Sell gold?</p>
+              <p className="text-xs text-ink-400">Tell Leblanc how much you have and your rate. You'll get an answer on Discord or WhatsApp.</p>
+            </div>
+            <Button variant="secondary" onClick={() => setSelling(true)}><HandCoins className="size-4" /> Sell gold</Button>
+          </div>
+        )}
+      </div>
     </Card>
   )
 }

@@ -2,21 +2,12 @@ import { useState, type FormEvent } from 'react'
 import { CheckCircle2, Coins } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
-import { parseGoldAmount } from '@/lib/gold'
+import { amountInKk } from '@/lib/gold'
 import type { ContactMethod } from '@/lib/inquiry'
 import { formatKk, formatMoney, formatRate, orderTotal, validateGoldOrder, type GoldOrderErrors } from '@/lib/orders'
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import { gold } from '@/data/published'
 import { ContactFields, Honeypot, inputCls } from '@/features/for-sale/ContactFields'
-
-/** "500kk", "1.5kkk", "500" (taken as KK) → KK */
-function amountInKk(raw: string): number | null {
-  const t = raw.trim()
-  if (!t) return null
-  if (/^\d+(\.\d+)?$/.test(t.replace(/,/g, ''))) return Number(t.replace(/,/g, ''))
-  const g = parseGoldAmount(t)
-  return g ? g / 1_000_000 : null
-}
 
 /** Order gold at the published rates; Leblanc gets it in #inquiries with the total. */
 export function GoldOrderForm({ onCancel }: { onCancel: () => void }) {

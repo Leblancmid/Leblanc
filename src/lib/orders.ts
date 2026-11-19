@@ -75,6 +75,46 @@ export function validateGoldOrder(raw: unknown, gold: GoldConfig):
   return Object.keys(errors).length || !rate ? { ok: false, errors } : { ok: true, value, rate }
 }
 
+// ── Gold offer ("sell me your gold") ──
+
+export interface GoldSellOffer {
+  name: string
+  method: ContactMethod
+  contact: string
+  /** How much gold they have, in KK */
+  amountKk: number
+  /** The rate they want, as typed: "$0.17", "₱10 per KK", "make me an offer" */
+  rate: string
+  message: string
+}
+
+export type GoldSellErrors = Partial<Record<keyof GoldSellOffer, string>>
+
+export function validateGoldSell(raw: unknown):
+  | { ok: true; value: GoldSellOffer }
+  | { ok: false; errors: GoldSellErrors } {
+  const r = (raw ?? {}) as Record<string, unknown>
+  const method = parseMethod(r.method)
+  const amount = typeof r.amountKk === 'number' ? r.amountKk : Number(r.amountKk)
+  const value: GoldSellOffer = {
+    name: cleanText(r.name, INQUIRY_LIMITS.name),
+    method,
+    contact: cleanContact(r.contact),
+    amountKk: Number.isFinite(amount) ? Math.round(amount * 100) / 100 : 0,
+    rate: cleanText(r.rate, 40),
+    message: cleanText(r.message, INQUIRY_LIMITS.message),
+  }
+
+  const errors: GoldSellErrors = {}
+  const n = nameError(value.name)
+  if (n) errors.name = n
+  const c = contactError(method, value.contact)
+  if (c) errors.contact = c
+  if (!(value.amountKk > 0) || value.amountKk > 1_000_000) errors.amountKk = 'Enter how much gold, e.g. 500KK.'
+
+  return Object.keys(errors).length ? { ok: false, errors } : { ok: true, value }
+}
+
 // ── Account offer ("sell me your account") ──
 
 export const OFFER_CATEGORIES = ['Melee', 'Distance', 'Magic'] as const
