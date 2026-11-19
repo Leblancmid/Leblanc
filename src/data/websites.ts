@@ -79,6 +79,8 @@ export interface WebsiteOffer {
   pitch: string
   includes: string[]
   timeline: string
+  /** "₱15,000": shown as "Starting at …" on the card. null = not shown yet */
+  startingAt: string | null
   /** Examples further down this page (ids of websiteProjects) */
   proof: { label: string; projectId: string }[]
 }
@@ -97,6 +99,7 @@ export const websiteOffers: WebsiteOffer[] = [
       'No monthly hosting bill',
     ],
     timeline: '1–3 weeks',
+    startingAt: null,
     proof: [{ label: 'This website', projectId: 'storefront' }],
   },
   {
@@ -111,6 +114,7 @@ export const websiteOffers: WebsiteOffer[] = [
       'Works on your phone, even offline',
     ],
     timeline: '4–8 weeks',
+    startingAt: null,
     proof: [
       { label: 'My back office', projectId: 'back-office' },
       { label: 'A company platform', projectId: 'company-platform' },
@@ -128,6 +132,7 @@ export const websiteOffers: WebsiteOffer[] = [
       'Backups, so nothing gets lost',
     ],
     timeline: 'Often a few days',
+    startingAt: null,
     proof: [],
   },
 ]

@@ -1,7 +1,10 @@
 import type { Env } from './http'
 
-/** account: wants one of your accounts · gold: buying gold · sell: selling you an account · sell_gold: selling you gold */
-export type LeadType = 'account' | 'gold' | 'sell' | 'sell_gold'
+/**
+ * account: wants one of your accounts · gold: buying gold · sell: selling you an account ·
+ * sell_gold: selling you gold · project: wants a website built
+ */
+export type LeadType = 'account' | 'gold' | 'sell' | 'sell_gold' | 'project'
 export const LEAD_STATUSES = ['new', 'contacted', 'won', 'lost'] as const
 export type LeadStatus = (typeof LEAD_STATUSES)[number]
 

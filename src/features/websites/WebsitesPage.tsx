@@ -6,11 +6,20 @@ import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { buttonClasses } from '@/components/ui/Button'
 import { websiteOffers, websiteProjects, type WebsiteOffer, type WebsiteProject } from '@/data/websites'
+import type { ProjectKind } from '@/lib/project'
+import { ProjectRequestForm } from './ProjectRequestForm'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { ScreenshotModal } from './ScreenshotModal'
 
 /** Websites and business systems built by Leblanc, and how to ask for one. */
 export function WebsitesPage() {
+  // "Get a quote" on an offer card: pick its kind in the form and bring the form into view
+  const [preset, setPreset] = useState<{ kind: ProjectKind; n: number } | null>(null)
+  const getQuote = (kind: ProjectKind) => {
+    setPreset((p) => ({ kind, n: (p?.n ?? 0) + 1 }))
+    requestAnimationFrame(() => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
       <SectionHeading
@@ -25,7 +34,7 @@ export function WebsitesPage() {
 
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {websiteOffers.map((o) => (
-          <OfferCard key={o.id} offer={o} />
+          <OfferCard key={o.id} offer={o} onQuote={() => getQuote(o.icon)} />
         ))}
       </div>
 
@@ -38,23 +47,26 @@ export function WebsitesPage() {
         </div>
       </section>
 
-      <Card className="mt-16 flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-        <div>
-          <p className="font-display text-2xl text-ink-100">Want one for your shop or business?</p>
-          <p className="mt-1 text-sm text-ink-300">Tell me what you need. I'll reply with questions and a fixed quote before any work starts.</p>
+      <Card id="quote" className="mt-16 flex scroll-mt-24 flex-col gap-6 p-6 sm:p-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-display text-2xl text-ink-100">Want one for your shop or business?</p>
+            <p className="mt-1 text-sm text-ink-300">Tell me what you need here, or message me directly.</p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-3">
+            <ContactButtons secondary />
+          </div>
         </div>
-        <div className="flex shrink-0 flex-wrap gap-3">
-          <ContactButtons />
-        </div>
+        <ProjectRequestForm preset={preset} />
       </Card>
     </div>
   )
 }
 
-function ContactButtons() {
+function ContactButtons({ secondary = false }: { secondary?: boolean }) {
   return (
     <>
-      <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className={buttonClasses('primary', 'md')}>
+      <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className={buttonClasses(secondary ? 'secondary' : 'primary', 'md')}>
         <MessageCircle className="size-4" />
         Message on Discord
       </a>
@@ -69,7 +81,7 @@ function ContactButtons() {
 const OFFER_ICONS = { store: Store, system: LayoutDashboard, fix: Wrench }
 
 /** One thing I take on: what's included, how long it usually takes, and examples on this page. */
-function OfferCard({ offer: o }: { offer: WebsiteOffer }) {
+function OfferCard({ offer: o, onQuote }: { offer: WebsiteOffer; onQuote: () => void }) {
   const Icon = OFFER_ICONS[o.icon]
   return (
     <Card className="flex flex-col p-6">
@@ -88,9 +100,10 @@ function OfferCard({ offer: o }: { offer: WebsiteOffer }) {
         ))}
       </ul>
 
-      <p className="mt-6 border-t border-ink-700 pt-5 text-sm text-ink-300">
-        Typical timeline: <span className="font-medium text-ink-100">{o.timeline}</span>
-      </p>
+      <div className="mt-6 flex flex-col gap-1 border-t border-ink-700 pt-5 text-sm text-ink-300">
+        {o.startingAt && <p>Starting at <span className="font-display text-lg text-gold-300">{o.startingAt}</span></p>}
+        <p>Typical timeline: <span className="font-medium text-ink-100">{o.timeline}</span></p>
+      </div>
       {o.proof.length > 0 && (
         <p className="mt-3 text-xs text-ink-400">
           Built before:{' '}
@@ -106,10 +119,10 @@ function OfferCard({ offer: o }: { offer: WebsiteOffer }) {
       )}
 
       <div className="mt-auto pt-6">
-        <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className={buttonClasses('primary', 'md', 'w-full justify-center')}>
+        <button type="button" onClick={onQuote} className={buttonClasses('primary', 'md', 'w-full justify-center')}>
           Get a quote
           <ArrowRight className="size-4" />
-        </a>
+        </button>
       </div>
     </Card>
   )
