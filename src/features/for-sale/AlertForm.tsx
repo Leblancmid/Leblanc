@@ -10,9 +10,11 @@ import { ContactFields, Honeypot, inputCls } from './ContactFields'
 /**
  * "Notify me": a buyer says what they're after (build + level range). When Leblanc lists a
  * match, they get a message. Starts as a small banner; opens into the form.
+ * openRequest: bump it to open the form from elsewhere on the page ("Get notified").
  */
-export function AlertForm({ defaultCategory }: { defaultCategory: AlertCategory | null }) {
+export function AlertForm({ defaultCategory, openRequest = 0 }: { defaultCategory: AlertCategory | null; openRequest?: number }) {
   const [open, setOpen]         = useState(false)
+  const [seenRequest, setSeenRequest] = useState(openRequest)
   const [saved]                 = useState(readSavedContact)
   const [category, setCategory] = useState<AlertCategory | null>(defaultCategory)
   const [minLevel, setMinLevel] = useState('')
@@ -25,6 +27,12 @@ export function AlertForm({ defaultCategory }: { defaultCategory: AlertCategory 
   const [errors, setErrors]     = useState<AlertErrors>({})
   const [status, setStatus]     = useState<'idle' | 'sending' | 'sent'>('idle')
   const [failure, setFailure]   = useState<string | null>(null)
+
+  // Asked to open from elsewhere on the page (adjusted during render, not in an effect)
+  if (openRequest !== seenRequest) {
+    setSeenRequest(openRequest)
+    if (!open) { setOpen(true); setOpenedAt(Date.now()) }
+  }
 
   const numberOnly = (v: string) => v.replace(/\D/g, '').slice(0, 4)
 

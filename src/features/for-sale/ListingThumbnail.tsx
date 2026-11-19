@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/Badge'
-import { categoryMeta, listingTitle } from '@/lib/listings'
+import { categoryMeta, hasPriceDrop, isNewListing, listingTitle } from '@/lib/listings'
 import { cn } from '@/lib/cn'
 import type { Listing } from '@/types'
 
@@ -46,6 +46,18 @@ export function ListingThumbnail({ listing, className }: ListingThumbnailProps) 
           </Badge>
         )}
       </div>
+
+      {/* Fresh on the list, or cheaper than before */}
+      {(isNewListing(listing) || hasPriceDrop(listing)) && (
+        <div className="absolute bottom-3 left-3 flex gap-1.5">
+          {isNewListing(listing) && (
+            <Badge tone="success" className="bg-ink-950/85 backdrop-blur-sm">New</Badge>
+          )}
+          {hasPriceDrop(listing) && (
+            <Badge tone="danger" className="bg-ink-950/85 backdrop-blur-sm">Price dropped</Badge>
+          )}
+        </div>
+      )}
     </div>
   )
 }

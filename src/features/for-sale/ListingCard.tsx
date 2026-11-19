@@ -1,7 +1,7 @@
 import { Link, type To } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
-import { categoryMeta } from '@/lib/listings'
+import { categoryMeta, hasPriceDrop } from '@/lib/listings'
 import type { Listing } from '@/types'
 import { ListingThumbnail } from './ListingThumbnail'
 import { ShareButton } from './ShareButton'
@@ -33,6 +33,7 @@ export function ListingCard({ listing, to }: ListingCardProps) {
               </p>
             </div>
             <span className="flex items-center gap-1 text-xs font-medium text-gold-300 opacity-80 transition-opacity group-hover:opacity-100">
+              {hasPriceDrop(listing) && <s className="text-ink-500">{listing.price_was}</s>}
               {listing.price ?? 'View details'}
               <ArrowUpRight className="size-3.5" />
             </span>

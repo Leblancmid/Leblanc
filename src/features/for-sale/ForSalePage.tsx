@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
-import { SearchX } from 'lucide-react'
+import { BellRing, SearchX, Zap } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
 import { listings } from '@/data/listings'
@@ -17,8 +17,9 @@ import type { Listing, ListingCategory } from '@/types'
 import { ListingGrid } from './ListingGrid'
 import { ListingModal } from './ListingModal'
 import { AlertForm } from './AlertForm'
+import { RecentlySold } from './RecentlySold'
 import { SellOfferForm } from './SellOfferForm'
-import { siteStats, trackingSinceLabel } from '@/data/published'
+import { replyTime, siteStats, trackingSinceLabel } from '@/data/published'
 
 const filters: { label: string; value: ListingCategory | null }[] = [
   { label: 'All', value: null },
@@ -40,7 +41,15 @@ export function ForSalePage() {
   const { hash } = useLocation()
   useEffect(() => {
     if (hash === '#sell') document.getElementById('sell')?.scrollIntoView({ behavior: 'smooth' })
+    if (hash === '#notify') document.getElementById('notify')?.scrollIntoView({ behavior: 'smooth' })
   }, [hash])
+
+  // "Get notified": open the alert form and bring it into view
+  const [alertRequest, setAlertRequest] = useState(() => (hash === '#notify' ? 1 : 0))
+  const notifyMe = () => {
+    setAlertRequest((n) => n + 1)
+    requestAnimationFrame(() => document.getElementById('notify')?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  }
 
   const updateParams = (changes: Record<string, string | null>) => {
     const next = new URLSearchParams(params)
@@ -65,13 +74,21 @@ export function ForSalePage() {
         title="Accounts for sale"
         description={`Melee, distance, and magic builds listed by Leblanc. Selling instead? Leblanc is buying Lv. ${BUYING_LEVEL_RANGE} accounts.`}
       />
-      {siteStats.accounts_sold > 0 && (
-        <p className="mt-3 text-sm text-ink-400">
-          <span className="font-semibold text-gold-300">{siteStats.accounts_sold} accounts sold</span>
-          {trackingSinceLabel && <> since {trackingSinceLabel}</>}
-          {siteStats.gold_trades > 0 && <> · {siteStats.gold_trades} gold trades</>}
-        </p>
-      )}
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ink-400">
+        {siteStats.accounts_sold > 0 && (
+          <p>
+            <span className="font-semibold text-gold-300">{siteStats.accounts_sold} accounts sold</span>
+            {trackingSinceLabel && <> since {trackingSinceLabel}</>}
+            {siteStats.gold_trades > 0 && <> · {siteStats.gold_trades} gold trades</>}
+          </p>
+        )}
+        {replyTime && (
+          <p className="flex items-center gap-1.5"><Zap className="size-3.5 text-gold-400" /> Usually replies {replyTime}</p>
+        )}
+        <button type="button" onClick={notifyMe} className="flex items-center gap-1.5 font-medium text-gold-300 transition-colors hover:text-gold-200">
+          <BellRing className="size-3.5" /> Get notified when your build is listed
+        </button>
+      </div>
 
       <div className="mt-8 flex flex-col gap-3 border-y border-ink-700/80 py-4 sm:flex-row sm:items-center sm:justify-between">
         <div
@@ -135,20 +152,23 @@ export function ForSalePage() {
             <p className="max-w-sm text-sm text-ink-400">
               New accounts are listed regularly. Ask on Discord if you're after a specific build.
             </p>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="mt-2"
-              onClick={() => updateParams({ build: null })}
-            >
-              Show all accounts
-            </Button>
+            <div className="mt-2 flex flex-wrap justify-center gap-2">
+              <Button variant="secondary" size="sm" onClick={() => updateParams({ build: null })}>
+                Show all accounts
+              </Button>
+              <Button size="sm" onClick={notifyMe}>
+                <BellRing className="size-3.5" /> Notify me when one is listed
+              </Button>
+            </div>
           </div>
         )}
       </div>
 
       <div className="mt-10 flex flex-col gap-4">
-        <AlertForm defaultCategory={category} />
+        <RecentlySold />
+        <div id="notify" className="scroll-mt-24">
+          <AlertForm defaultCategory={category} openRequest={alertRequest} />
+        </div>
         <SellOfferForm />
       </div>
 

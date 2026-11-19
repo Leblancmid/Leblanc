@@ -4,7 +4,8 @@ import { Modal } from '@/components/modals/Modal'
 import { buttonClasses } from '@/components/ui/Button'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
-import { categoryMeta, listingReference, listingTitle } from '@/lib/listings'
+import { categoryMeta, hasPriceDrop, listingReference, listingTitle } from '@/lib/listings'
+import { replyTime } from '@/data/published'
 import type { Listing } from '@/types'
 import { ShareButton } from './ShareButton'
 import { SkillBars } from './SkillBars'
@@ -31,7 +32,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
   const reference = listingReference(listing)
   const facts = [
     { icon: Layers, label: 'Level', value: String(listing.level) },
-    { icon: Tag, label: 'Price', value: listing.price ?? 'On request' },
+    { icon: Tag, label: 'Price', value: listing.price ?? 'On request', was: hasPriceDrop(listing) ? listing.price_was : undefined },
   ]
 
   return (
@@ -40,7 +41,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
       onClose={onClose}
       size="lg"
       title={listingTitle(listing)}
-      description={`${listing.category} build · Listed by Leblanc`}
+      description={`${listing.category} build · Listed by Leblanc${replyTime ? ` · usually replies ${replyTime}` : ''}`}
       footer={
         <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
           <button
@@ -113,7 +114,10 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
                   <fact.icon className="size-3.5" />
                   {fact.label}
                 </dt>
-                <dd className="text-sm font-semibold text-ink-100">{fact.value}</dd>
+                <dd className="text-sm font-semibold text-ink-100">
+                  {fact.was && <s className="mr-1.5 text-xs font-normal text-ink-500" title="Price before it dropped">{fact.was}</s>}
+                  {fact.value}
+                </dd>
               </div>
             ))}
           </dl>

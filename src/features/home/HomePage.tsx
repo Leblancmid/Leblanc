@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Store,
   Trophy,
+  Zap,
   type LucideIcon,
 } from 'lucide-react'
 import { LinkButton } from '@/components/ui/LinkButton'
@@ -30,7 +31,8 @@ import { TrustNotice } from '@/features/information/TrustNotice'
 import { DISCORD_URL, WHATSAPP_URL } from '@/lib/links'
 import { formatCompactPlus, formatOrList } from '@/lib/format'
 import { listingPath } from '@/lib/listings'
-import { siteStats, trackingSinceLabel } from '@/data/published'
+import { replyTime, siteStats, trackingSinceLabel } from '@/data/published'
+import { RecentlySold } from '@/features/for-sale/RecentlySold'
 import { GoldRates } from '@/features/gold/GoldRates'
 
 // Accounts sold / gold trades come from the sales records (published from the Budget app)
@@ -122,6 +124,11 @@ export function HomePage() {
               Pay or get paid via{' '}
               <span className="text-ink-200">{formatOrList(PAYMENT_METHODS)}</span>.
             </p>
+            {replyTime && (
+              <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-ink-400 lg:justify-start">
+                <Zap className="size-3.5 text-gold-400" /> Usually replies <span className="text-ink-200">{replyTime}</span>
+              </p>
+            )}
           </div>
 
           <Link
@@ -225,6 +232,8 @@ export function HomePage() {
               <ListingCard key={listing.id} listing={listing} to={listingPath(listing.id)} />
             ))}
           </div>
+
+          <RecentlySold className="mt-6" />
         </div>
       </section>
 

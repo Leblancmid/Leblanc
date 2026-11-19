@@ -44,5 +44,31 @@ export const listingTitle = (listing: Listing) =>
 
 export const listingReference = (listing: Listing) => listing.id.toUpperCase()
 
+/** Badges: how long a listing counts as new, and a price drop stays flagged */
+export const NEW_DAYS = 7
+export const PRICE_DROP_DAYS = 14
+
+/** Today in Manila (Y-m-d), the zone the listing dates are written in */
+export const todayManila = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' })
+
+/** Whole days from a Y-m-d date to today (Y-m-d) */
+export const daysSince = (date: string, today = todayManila()) =>
+  Math.round((Date.parse(`${today}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`)) / 86_400_000)
+
+export const isNewListing = (l: Listing, today?: string) =>
+  !!l.listed_at && daysSince(l.listed_at, today) >= 0 && daysSince(l.listed_at, today) < NEW_DAYS
+
+export const hasPriceDrop = (l: Listing, today?: string) =>
+  !!l.price_was && !!l.price_dropped_at && daysSince(l.price_dropped_at, today) < PRICE_DROP_DAYS
+
+/** "today", "yesterday", "3 days ago", "2 weeks ago" */
+export function soldAgo(date: string, today?: string): string {
+  const d = Math.max(0, daysSince(date, today))
+  if (d === 0) return 'today'
+  if (d === 1) return 'yesterday'
+  if (d < 14) return `${d} days ago`
+  return `${Math.floor(d / 7)} weeks ago`
+}
+
 /** Deep link that opens a listing's detail dialog on the For Sale page. */
 export const listingPath = (id: string) => `/for-sale?listing=${encodeURIComponent(id)}`

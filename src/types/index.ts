@@ -14,4 +14,9 @@ export interface Listing {
   image?: string
   /** Free-form asking price, e.g. "€450" or "2B gold". Shown as "On request" when absent. */
   price?: string
+  /** Day it was listed (Y-m-d), for the "New" badge */
+  listed_at?: string
+  /** The price before it went down, and the day it did (Y-m-d): the "Price dropped" badge */
+  price_was?: string
+  price_dropped_at?: string
 }
