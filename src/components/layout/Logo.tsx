@@ -4,9 +4,13 @@ import { cn } from '@/lib/cn'
 export function Logo({ className }: { className?: string }) {
   return (
     <Link to="/" className={cn('group flex items-center gap-2.5', className)}>
-      <span className="flex size-8 items-center justify-center rounded-md border border-gold-500/40 bg-gradient-to-br from-ink-800 to-ink-900 font-display text-lg text-gold-400 transition-colors group-hover:border-gold-400">
-        L
-      </span>
+      <img
+        src="/icons/icon-64.png"
+        alt=""
+        width={36}
+        height={36}
+        className="size-9 rounded-full transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.45)]"
+      />
       <span className="font-display text-xl tracking-wide text-ink-100">
         Leblanc
       </span>
