@@ -5,7 +5,7 @@
 import { contactMarkdown } from '../../src/lib/inquiry'
 import { formatKk, validateGoldSell } from '../../src/lib/orders'
 import { json, looksLikeBot, postToDiscord, readJson, sameOrigin, type Context } from '../../server/http'
-import { saveLead } from '../../server/leads'
+import { saveLead, sourceOf } from '../../server/leads'
 
 const FALLBACK = 'Please message Leblanc on Discord instead.'
 
@@ -22,6 +22,7 @@ export const onRequestPost = async ({ request, env }: Context) => {
   const o = result.value
 
   const saved = await saveLead(env, {
+    source: sourceOf(request),
     type: 'sell_gold', name: o.name, method: o.method, contact: o.contact,
     details: { amount_kk: o.amountKk, rate: o.rate || null, message: o.message || null },
   })

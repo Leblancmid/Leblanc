@@ -8,7 +8,7 @@
 import listings from '../../src/data/listings.json'
 import { contactMarkdown, validateInquiry } from '../../src/lib/inquiry'
 import { json, looksLikeBot, postToDiscord, readJson, sameOrigin, type Context } from '../../server/http'
-import { saveLead } from '../../server/leads'
+import { saveLead, sourceOf } from '../../server/leads'
 
 interface PublishedListing {
   id: string
@@ -43,6 +43,7 @@ export const onRequestPost = async ({ request, env }: Context) => {
   const self = new URL(request.url)
   const title = `Lv ${listing.level} ${listing.category}${listing.price ? ` · ${listing.price}` : ''}`
   const saved = await saveLead(env, {
+    source: sourceOf(request),
     type: 'account', name: inquiry.name, method: inquiry.method, contact: inquiry.contact, listingId: listing.id,
     details: { title, message: inquiry.message || null },
   })

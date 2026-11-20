@@ -67,3 +67,11 @@ CREATE TABLE IF NOT EXISTS leads (
   updated_at INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS leads_status ON leads (status, created_at);
+
+-- Visitors per Discord server per day: your listing posts link here with ?from=<server tag>
+CREATE TABLE IF NOT EXISTS source_visitors (
+  day     TEXT NOT NULL,
+  source  TEXT NOT NULL,
+  visitor TEXT NOT NULL,
+  PRIMARY KEY (day, source, visitor)
+);

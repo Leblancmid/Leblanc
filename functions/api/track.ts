@@ -3,12 +3,15 @@
  *   pageview → today's page views and unique visitors, and "online now"
  *   ping     → still online (sent every minute while the tab is open)
  *   listing  → someone opened an account's details
+ * A pageview with "from" (the Discord server the visitor came from) also counts for that server.
  * Visitor / session IDs are random strings the browser makes; nothing personal is stored.
  */
 import { json, manilaDay, readJson, sameOrigin, type Context } from '../../server/http'
 
 const ID = /^[a-z0-9]{8,40}$/i
 const LISTING = /^[a-z0-9-]{1,40}$/i
+/** A Discord server's tag, e.g. "d-3fa9c2" (see src/lib/source.ts) */
+const SOURCE = /^[a-z0-9-]{1,24}$/
 
 export const onRequestPost = async ({ request, env }: Context) => {
   // Not set up yet (no database): accept quietly so the site never shows an error
@@ -53,5 +56,13 @@ export const onRequestPost = async ({ request, env }: Context) => {
   }
 
   await db.batch(statements)
+
+  // Which Discord server sent this visitor (?from= on your listing posts). Its own write, so a
+  // database without the source_visitors table yet still counts the visit above.
+  const from = typeof body.from === 'string' ? body.from.toLowerCase() : ''
+  if (type === 'pageview' && SOURCE.test(from)) {
+    await db.prepare('INSERT OR IGNORE INTO source_visitors (day, source, visitor) VALUES (?, ?, ?)')
+      .bind(day, from, visitor).run().catch(() => {})
+  }
   return new Response(null, { status: 204 })
 }

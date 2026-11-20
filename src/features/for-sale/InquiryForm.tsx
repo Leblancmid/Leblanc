@@ -5,6 +5,7 @@ import { INQUIRY_LIMITS, validateInquiry, type ContactMethod, type InquiryErrors
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import type { Listing } from '@/types'
 import { ContactFields, Honeypot, inputCls } from './ContactFields'
+import { sourceHeader } from '@/lib/source'
 
 /**
  * "I want this": the buyer leaves a name and a Discord / WhatsApp contact, and Leblanc gets it
@@ -32,7 +33,7 @@ export function InquiryForm({ listing, onCancel }: { listing: Listing; onCancel:
     try {
       const res = await fetch('/api/inquiry', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json', ...sourceHeader() },
         body: JSON.stringify({ ...check.value, website, openedAt }),
       })
       const body = await res.json().catch(() => ({}))

@@ -6,7 +6,7 @@
 import { contactMarkdown } from '../../src/lib/inquiry'
 import { screenshotError, validateOffer } from '../../src/lib/orders'
 import { imageKind, json, looksLikeBot, postToDiscordWithFile, sameOrigin, type Context } from '../../server/http'
-import { saveLead } from '../../server/leads'
+import { saveLead, sourceOf } from '../../server/leads'
 
 const FALLBACK = 'Please message Leblanc on Discord instead.'
 
@@ -43,6 +43,7 @@ export const onRequestPost = async ({ request, env }: Context) => {
     .filter((k) => o.stats[k] !== undefined).map((k) => `${k[0].toUpperCase()}${k.slice(1)} ${o.stats[k]}`).join(' · ')
 
   const saved = await saveLead(env, {
+    source: sourceOf(request),
     type: 'sell', name: o.name, method: o.method, contact: o.contact,
     details: { level: o.level, category: o.category, stats: o.stats, asking: o.asking || null, message: o.message || null },
   })

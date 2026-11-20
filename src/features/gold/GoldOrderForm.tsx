@@ -8,6 +8,7 @@ import { formatKk, formatMoney, formatRate, orderTotal, validateGoldOrder, type 
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import { gold } from '@/data/published'
 import { ContactFields, Honeypot, inputCls } from '@/features/for-sale/ContactFields'
+import { sourceHeader } from '@/lib/source'
 
 /** Order gold at the published rates; Leblanc gets it in #inquiries with the total. */
 export function GoldOrderForm({ onCancel }: { onCancel: () => void }) {
@@ -35,7 +36,7 @@ export function GoldOrderForm({ onCancel }: { onCancel: () => void }) {
     setErrors({}); setFailure(null); setStatus('sending')
     try {
       const res = await fetch('/api/gold-order', {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...sourceHeader() },
         body: JSON.stringify({ ...check.value, website, openedAt }),
       })
       const body = await res.json().catch(() => ({}))

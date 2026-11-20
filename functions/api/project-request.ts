@@ -5,7 +5,7 @@
 import { contactMarkdown } from '../../src/lib/inquiry'
 import { PROJECT_KINDS, validateProject } from '../../src/lib/project'
 import { json, looksLikeBot, postToDiscord, readJson, sameOrigin, type Context } from '../../server/http'
-import { saveLead } from '../../server/leads'
+import { saveLead, sourceOf } from '../../server/leads'
 
 const FALLBACK = 'Please message Leblanc on Discord instead.'
 
@@ -22,6 +22,7 @@ export const onRequestPost = async ({ request, env }: Context) => {
   const p = result.value
 
   const saved = await saveLead(env, {
+    source: sourceOf(request),
     type: 'project', name: p.name, method: p.method, contact: p.contact,
     details: { kind: p.kind, message: p.details, budget: p.budget || null, timeline: p.timeline || null },
   })

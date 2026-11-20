@@ -7,6 +7,7 @@ import type { ContactMethod } from '@/lib/inquiry'
 import { OFFER_CATEGORIES, OFFER_STATS, screenshotError, validateOffer, type AccountOfferErrors } from '@/lib/orders'
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import { ContactFields, Honeypot, inputCls } from './ContactFields'
+import { sourceHeader } from '@/lib/source'
 
 /**
  * "Sell me your account": level, build, stats, asking price and a screenshot of the Stats
@@ -46,7 +47,7 @@ export function SellOfferForm() {
     Object.entries({ ...fields, website, openedAt: String(openedAt) }).forEach(([k, v]) => form.append(k, v))
     form.append('screenshot', shot!)
     try {
-      const res = await fetch('/api/sell-offer', { method: 'POST', body: form })
+      const res = await fetch('/api/sell-offer', { method: 'POST', headers: sourceHeader(), body: form })
       const body = await res.json().catch(() => ({}))
       if (!res.ok) {
         if (body.errors) setErrors(body.errors)

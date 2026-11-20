@@ -15,7 +15,7 @@ export const onRequestGet = async ({ request, env }: Context) => {
   const now = Date.now()
   const day = (daysAgo: number) => manilaDay(now - daysAgo * 86_400_000)
 
-  const [online, pages, daily, totals, unique, views, alerts, leads] = await Promise.all([
+  const [online, pages, daily, totals, unique, views, alerts, leads, visitsBySource, leadsBySource] = await Promise.all([
     db.prepare('SELECT COUNT(*) AS n FROM presence WHERE last_seen > ?').bind(now - ONLINE_MS).first<{ n: number }>(),
     db.prepare('SELECT path, COUNT(*) AS n FROM presence WHERE last_seen > ? GROUP BY path ORDER BY n DESC LIMIT 5')
       .bind(now - ONLINE_MS).all<{ path: string | null; n: number }>(),
@@ -34,6 +34,19 @@ export const onRequestGet = async ({ request, env }: Context) => {
     // Leads still waiting for a reply (table added later: missing table = none)
     db.prepare("SELECT COUNT(*) AS n, MIN(created_at) AS oldest FROM leads WHERE status = 'new'").first<{ n: number; oldest: number | null }>()
       .catch(() => null),
+    // Per Discord server (?from= on your listing posts): unique visitors in the last 7 / 30 days
+    // (missing table = none yet)
+    db.prepare(
+      'SELECT source, COUNT(DISTINCT CASE WHEN day >= ? THEN visitor END) AS visitors_7, COUNT(DISTINCT visitor) AS visitors_30 ' +
+      'FROM source_visitors WHERE day >= ? GROUP BY source',
+    ).bind(day(6), day(29)).all<{ source: string; visitors_7: number; visitors_30: number }>()
+      .catch(() => ({ results: [] as { source: string; visitors_7: number; visitors_30: number }[] })),
+    // ...and the requests sent by those visitors in the last 30 days
+    db.prepare(
+      "SELECT json_extract(details, '$.from') AS source, COUNT(*) AS n FROM leads " +
+      "WHERE created_at >= ? AND json_extract(details, '$.from') IS NOT NULL GROUP BY source",
+    ).bind(now - 30 * 86_400_000).all<{ source: string; n: number }>()
+      .catch(() => ({ results: [] as { source: string; n: number }[] })),
   ])
 
   const sum = (from: string, key: 'visitors' | 'pageviews') =>
@@ -52,5 +65,19 @@ export const onRequestGet = async ({ request, env }: Context) => {
     listing_views: views.results,
     alerts: alerts.results,
     leads_new: { count: leads?.n ?? 0, oldest: leads?.oldest ?? null },
+    // Which Discord servers bring visitors and requests
+    sources: sourceRows(visitsBySource.results, leadsBySource.results),
+  })
+}
+
+/** One row per Discord server tag, joining its visitors and requests */
+function sourceRows(
+  visits: { source: string; visitors_7: number; visitors_30: number }[],
+  leads: { source: string; n: number }[],
+) {
+  const tags = [...new Set([...visits.map((v) => v.source), ...leads.map((l) => l.source)])]
+  return tags.map((source) => {
+    const v = visits.find((x) => x.source === source)
+    return { source, visitors_7: v?.visitors_7 ?? 0, visitors_30: v?.visitors_30 ?? 0, requests_30: leads.find((x) => x.source === source)?.n ?? 0 }
   })
 }

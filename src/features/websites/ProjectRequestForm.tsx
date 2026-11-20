@@ -6,6 +6,7 @@ import type { ContactMethod } from '@/lib/inquiry'
 import { PROJECT_DETAILS_MAX, PROJECT_KINDS, validateProject, type ProjectErrors, type ProjectKind } from '@/lib/project'
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import { ContactFields, Honeypot, inputCls } from '@/features/for-sale/ContactFields'
+import { sourceHeader } from '@/lib/source'
 
 /**
  * "Tell me about your project": what they need, budget and timeline, and how to reach them.
@@ -41,7 +42,7 @@ export function ProjectRequestForm({ preset }: { preset: { kind: ProjectKind; n:
     setErrors({}); setFailure(null); setStatus('sending')
     try {
       const res = await fetch('/api/project-request', {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...sourceHeader() },
         body: JSON.stringify({ ...check.value, website, openedAt }),
       })
       const body = await res.json().catch(() => ({}))

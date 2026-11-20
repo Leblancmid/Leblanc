@@ -6,6 +6,7 @@ import type { ContactMethod } from '@/lib/inquiry'
 import { formatKk, validateGoldSell, type GoldSellErrors } from '@/lib/orders'
 import { readSavedContact, saveContact } from '@/lib/savedContact'
 import { ContactFields, Honeypot, inputCls } from '@/features/for-sale/ContactFields'
+import { sourceHeader } from '@/lib/source'
 
 /** Sell your gold to Leblanc: how much, at what rate, and how to reach you. Lands in #inquiries. */
 export function SellGoldForm({ onCancel }: { onCancel: () => void }) {
@@ -31,7 +32,7 @@ export function SellGoldForm({ onCancel }: { onCancel: () => void }) {
     setErrors({}); setFailure(null); setStatus('sending')
     try {
       const res = await fetch('/api/sell-gold', {
-        method: 'POST', headers: { 'content-type': 'application/json' },
+        method: 'POST', headers: { 'content-type': 'application/json', ...sourceHeader() },
         body: JSON.stringify({ ...check.value, website, openedAt }),
       })
       const body = await res.json().catch(() => ({}))

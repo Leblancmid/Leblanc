@@ -4,6 +4,8 @@
  * names or IPs.
  */
 
+import { currentSource } from './source'
+
 type TrackType = 'pageview' | 'ping' | 'listing'
 
 const newId = () => (crypto.randomUUID?.() ?? `${Date.now()}${Math.random()}`).replace(/[^a-z0-9]/gi, '').slice(0, 32)
@@ -22,11 +24,14 @@ function storedId(area: 'local' | 'session', key: string): string {
 }
 
 export function track(type: TrackType, extra: Record<string, string> = {}): void {
+  const from = type === 'pageview' ? currentSource() : null
   const body = JSON.stringify({
     type,
     visitor: storedId('local', 'lb_visitor'),
     session: storedId('session', 'lb_session'),
     path: location.pathname,
+    // The Discord server this visitor came from (see lib/source)
+    ...(from ? { from } : {}),
     ...extra,
   })
   // keepalive: still sent if the visitor is leaving the page
