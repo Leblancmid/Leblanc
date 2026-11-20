@@ -29,6 +29,20 @@
         "featured": true
     },
     {
+        "id": "acc-52",
+        "category": "Melee",
+        "level": 668,
+        "stats": {
+            "melee": 600,
+            "distance": 398,
+            "magic": 319,
+            "defense": 537
+        },
+        "image": "/listings/acc-52.jpg",
+        "listed_at": "2026-11-20",
+        "featured": true
+    },
+    {
         "id": "acc-51",
         "category": "Distance",
         "level": 660,
@@ -39,8 +53,7 @@
             "defense": 566
         },
         "image": "/listings/acc-51.jpg",
-        "listed_at": "2026-11-19",
-        "featured": true
+        "listed_at": "2026-11-19"
     },
     {
         "id": "acc-50",
