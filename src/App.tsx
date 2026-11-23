@@ -7,6 +7,7 @@ import { GoldCalculatorPage } from '@/features/gold-calculator/GoldCalculatorPag
 import { NotFoundPage } from '@/features/not-found/NotFoundPage'
 import { WebsitesPage } from '@/features/websites/WebsitesPage'
 import { ReviewPage } from '@/features/reviews/ReviewPage'
+import { TradesPage } from '@/features/trades/TradesPage'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="information" element={<InformationPage />} />
           <Route path="websites" element={<WebsitesPage />} />
           <Route path="review" element={<ReviewPage />} />
+          <Route path="trades" element={<TradesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

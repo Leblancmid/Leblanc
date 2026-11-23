@@ -35,6 +35,7 @@ import { replyTime, siteStats, trackingSinceLabel } from '@/data/published'
 import { RecentlySold } from '@/features/for-sale/RecentlySold'
 import { GoldRates } from '@/features/gold/GoldRates'
 import { ReviewsSection } from '@/features/reviews/ReviewsSection'
+import { ProvenTradesSection } from '@/features/trades/ProvenTradesSection'
 
 // Accounts sold / gold trades come from the sales records (published from the Budget app)
 const stats = [
@@ -212,6 +213,9 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Proven trades: the biggest ones with screenshots (once published from the app) */}
+      <ProvenTradesSection className="border-t border-ink-700/60" />
 
       {/* Buyer reviews (once there are approved ones) */}
       <ReviewsSection className="border-t border-ink-700/60" />

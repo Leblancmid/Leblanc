@@ -1,6 +1,7 @@
 import type { GoldConfig } from '@/lib/orders'
 import goldData from './gold.json'
 import statsData from './site-stats.json'
+import proofsData from './proofs.json'
 
 /**
  * Data published by the Budget Tracker app with the listings (Listing Kit → Publish to website).
@@ -22,6 +23,26 @@ export const siteStats = statsData as {
   /** Typical minutes from a request to Leblanc's reply; null when there's too little to go on */
   reply_minutes?: number | null
 }
+
+/** A proven trade: one of Leblanc's best trades with its screenshots (biggest first, rank 1 = top) */
+export interface ProofTrade {
+  id: string
+  rank: number
+  title: string
+  value: number
+  currency: 'EUR' | 'USD' | 'PHP'
+  traded_on: string | null
+  quote: string | null
+  quote_by: string | null
+  images: { src: string; thumb: string; width: number; height: number }[]
+}
+
+/** Proven trades, published from the Budget app's "Proven trades" */
+export const proofTrades = proofsData as ProofTrade[]
+
+/** "€9,000" */
+export const formatTradeValue = (t: Pick<ProofTrade, 'value' | 'currency'>) =>
+  `${{ EUR: '€', USD: '$', PHP: '₱' }[t.currency]}${t.value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`
 
 /** "within an hour" / "within 3 hours" / "within 2 days", or null when unknown */
 export function replyTimeLabel(minutes: number | null | undefined): string | null {
