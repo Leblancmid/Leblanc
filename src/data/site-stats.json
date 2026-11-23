@@ -1,6 +1,6 @@
 {
     "accounts_sold": 34,
-    "gold_trades": 111,
+    "gold_trades": 117,
     "avg_days_to_sell": 19,
     "tracking_since": "2026-07",
     "recent_sold": [
@@ -8,26 +8,6 @@
             "level": 672,
             "category": "Melee",
             "sold_on": "2026-11-14"
-        },
-        {
-            "level": 621,
-            "category": "Distance",
-            "sold_on": "2026-11-05"
-        },
-        {
-            "level": 621,
-            "category": "Distance",
-            "sold_on": "2026-11-05"
-        },
-        {
-            "level": 621,
-            "category": "Distance",
-            "sold_on": "2026-11-05"
-        },
-        {
-            "level": 621,
-            "category": "Distance",
-            "sold_on": "2026-11-05"
         },
         {
             "level": 621,
@@ -43,7 +23,27 @@
             "level": 657,
             "category": "Distance",
             "sold_on": "2026-10-13"
+        },
+        {
+            "level": 583,
+            "category": "Distance",
+            "sold_on": "2026-10-10"
+        },
+        {
+            "level": 514,
+            "category": "Distance",
+            "sold_on": "2026-10-05"
+        },
+        {
+            "level": 586,
+            "category": "Magic",
+            "sold_on": "2026-10-05"
+        },
+        {
+            "level": 609,
+            "category": "Distance",
+            "sold_on": "2026-10-01"
         }
     ],
-    "reply_minutes": 29
+    "reply_minutes": 35
 }

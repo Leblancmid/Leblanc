@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "id": "trade-1",
+        "rank": 1,
+        "title": "Top Melee Trade",
+        "value": 9000,
+        "currency": "EUR",
+        "traded_on": "2025-05-20",
+        "quote": "The goats, biggest trade is history 🔥",
+        "quote_by": "Flecha",
+        "images": [
+            {
+                "src": "/proofs/pNCizg0vwRCMrngal30uRrlg.webp",
+                "thumb": "/proofs/pNCizg0vwRCMrngal30uRrlg-thumb.webp",
+                "width": 1600,
+                "height": 1203
+            },
+            {
+                "src": "/proofs/XBozTouI8iEKJlXrICbhJUlQ.webp",
+                "thumb": "/proofs/XBozTouI8iEKJlXrICbhJUlQ-thumb.webp",
+                "width": 947,
+                "height": 742
+            }
+        ]
+    }
+]
