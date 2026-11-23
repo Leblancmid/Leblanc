@@ -2,7 +2,7 @@
     {
         "id": "trade-1",
         "rank": 1,
-        "title": "Top Melee Trade",
+        "title": "TOP MELEE TRADE",
         "value": 9000,
         "currency": "EUR",
         "traded_on": "2025-05-20",
@@ -20,6 +20,150 @@
                 "thumb": "/proofs/XBozTouI8iEKJlXrICbhJUlQ-thumb.webp",
                 "width": 947,
                 "height": 742
+            }
+        ]
+    },
+    {
+        "id": "trade-2",
+        "rank": 2,
+        "title": "TOP MAGIC TRADE",
+        "value": 7750,
+        "currency": "EUR",
+        "traded_on": "2025-03-30",
+        "quote": "Good price and smooth process",
+        "quote_by": "Balerion",
+        "images": [
+            {
+                "src": "/proofs/xMPKCFck6Mbc5glOI3B9IUuD.webp",
+                "thumb": "/proofs/xMPKCFck6Mbc5glOI3B9IUuD-thumb.webp",
+                "width": 1216,
+                "height": 1697
+            },
+            {
+                "src": "/proofs/5SkC3MYsmcRwZvFDTs0i2oRR.webp",
+                "thumb": "/proofs/5SkC3MYsmcRwZvFDTs0i2oRR-thumb.webp",
+                "width": 763,
+                "height": 753
+            }
+        ]
+    },
+    {
+        "id": "trade-3",
+        "rank": 3,
+        "title": "TOP 3 EXP FOR €2351 + 781 BASE",
+        "value": 6800,
+        "currency": "EUR",
+        "traded_on": "2026-07-17",
+        "quote": "I recommend leb for anyone",
+        "quote_by": "Sirius Blade",
+        "images": [
+            {
+                "src": "/proofs/i3DC3FKn5coAGYX8GZdtOAtG.webp",
+                "thumb": "/proofs/i3DC3FKn5coAGYX8GZdtOAtG-thumb.webp",
+                "width": 600,
+                "height": 413
+            },
+            {
+                "src": "/proofs/3koXZPzVv7H7Soeye3eqZIPJ.webp",
+                "thumb": "/proofs/3koXZPzVv7H7Soeye3eqZIPJ-thumb.webp",
+                "width": 813,
+                "height": 413
+            },
+            {
+                "src": "/proofs/Dgmwk3Fj32tjFj7kwp01ULAE.webp",
+                "thumb": "/proofs/Dgmwk3Fj32tjFj7kwp01ULAE-thumb.webp",
+                "width": 628,
+                "height": 442
+            }
+        ]
+    },
+    {
+        "id": "trade-4",
+        "rank": 4,
+        "title": "TOP 2 EXP X TOP MAGE TRADE",
+        "value": 6400,
+        "currency": "EUR",
+        "traded_on": "2025-01-17",
+        "quote": "Leblanc was mm everything went good. +rep",
+        "quote_by": "javix",
+        "images": [
+            {
+                "src": "/proofs/RK93EeEy0sUr88WhnJd5KD0o.webp",
+                "thumb": "/proofs/RK93EeEy0sUr88WhnJd5KD0o-thumb.webp",
+                "width": 1600,
+                "height": 720
+            },
+            {
+                "src": "/proofs/PrPoEeHJiJXmuWLBLxQbuWgD.webp",
+                "thumb": "/proofs/PrPoEeHJiJXmuWLBLxQbuWgD-thumb.webp",
+                "width": 813,
+                "height": 413
+            },
+            {
+                "src": "/proofs/MoGdLl4majRDwJ5twvzcf4Mb.webp",
+                "thumb": "/proofs/MoGdLl4majRDwJ5twvzcf4Mb-thumb.webp",
+                "width": 648,
+                "height": 744
+            }
+        ]
+    },
+    {
+        "id": "trade-5",
+        "rank": 5,
+        "title": "TOP 3 EXP TRADE",
+        "value": 5400,
+        "currency": "EUR",
+        "traded_on": "2025-07-03",
+        "quote": "Trade went great thx",
+        "quote_by": "Balerion",
+        "images": [
+            {
+                "src": "/proofs/iv8nGMVeCYLPFopM86ogsrvl.webp",
+                "thumb": "/proofs/iv8nGMVeCYLPFopM86ogsrvl-thumb.webp",
+                "width": 1195,
+                "height": 705
+            },
+            {
+                "src": "/proofs/627nV2TDmBbnSwObqeAvOlrn.webp",
+                "thumb": "/proofs/627nV2TDmBbnSwObqeAvOlrn-thumb.webp",
+                "width": 1220,
+                "height": 2712
+            },
+            {
+                "src": "/proofs/g7s0p65GSX33ISntzCZAnzWt.webp",
+                "thumb": "/proofs/g7s0p65GSX33ISntzCZAnzWt-thumb.webp",
+                "width": 642,
+                "height": 739
+            }
+        ]
+    },
+    {
+        "id": "trade-6",
+        "rank": 6,
+        "title": "TOP EXP (CURRENT LV. 1000)",
+        "value": 3700,
+        "currency": "EUR",
+        "traded_on": "2025-03-11",
+        "quote": "Thank you very much, I am very happy with the transaction.",
+        "quote_by": "Bestial",
+        "images": [
+            {
+                "src": "/proofs/QBwGPJSgcmGSo6ES9sihIfJJ.webp",
+                "thumb": "/proofs/QBwGPJSgcmGSo6ES9sihIfJJ-thumb.webp",
+                "width": 1200,
+                "height": 636
+            },
+            {
+                "src": "/proofs/ee2YwttDC9JGS4auRYAc6qwZ.webp",
+                "thumb": "/proofs/ee2YwttDC9JGS4auRYAc6qwZ-thumb.webp",
+                "width": 1220,
+                "height": 2712
+            },
+            {
+                "src": "/proofs/joeZSfBvXDEJhU8znfDkuLFG.webp",
+                "thumb": "/proofs/joeZSfBvXDEJhU8znfDkuLFG-thumb.webp",
+                "width": 643,
+                "height": 741
             }
         ]
     }
