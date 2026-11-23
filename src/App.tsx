@@ -6,6 +6,7 @@ import { InformationPage } from '@/features/information/InformationPage'
 import { GoldCalculatorPage } from '@/features/gold-calculator/GoldCalculatorPage'
 import { NotFoundPage } from '@/features/not-found/NotFoundPage'
 import { WebsitesPage } from '@/features/websites/WebsitesPage'
+import { ReviewPage } from '@/features/reviews/ReviewPage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="gold-calculator" element={<GoldCalculatorPage />} />
           <Route path="information" element={<InformationPage />} />
           <Route path="websites" element={<WebsitesPage />} />
+          <Route path="review" element={<ReviewPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

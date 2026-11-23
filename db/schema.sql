@@ -68,6 +68,19 @@ CREATE TABLE IF NOT EXISTS leads (
 );
 CREATE INDEX IF NOT EXISTS leads_status ON leads (status, created_at);
 
+-- Buyer reviews from review links (one per sale), shown once approved in the Budget Tracker app
+CREATE TABLE IF NOT EXISTS reviews (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  sale_id    INTEGER NOT NULL UNIQUE,
+  item       TEXT NOT NULL,
+  name       TEXT NOT NULL,
+  rating     INTEGER NOT NULL,
+  message    TEXT NOT NULL,
+  status     TEXT NOT NULL DEFAULT 'pending',
+  created_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS reviews_status ON reviews (status, created_at);
+
 -- Visitors per Discord server per day: your listing posts link here with ?from=<server tag>
 CREATE TABLE IF NOT EXISTS source_visitors (
   day     TEXT NOT NULL,

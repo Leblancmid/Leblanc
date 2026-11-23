@@ -34,6 +34,7 @@ import { listingPath } from '@/lib/listings'
 import { replyTime, siteStats, trackingSinceLabel } from '@/data/published'
 import { RecentlySold } from '@/features/for-sale/RecentlySold'
 import { GoldRates } from '@/features/gold/GoldRates'
+import { ReviewsSection } from '@/features/reviews/ReviewsSection'
 
 // Accounts sold / gold trades come from the sales records (published from the Budget app)
 const stats = [
@@ -211,6 +212,9 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Buyer reviews (once there are approved ones) */}
+      <ReviewsSection className="border-t border-ink-700/60" />
 
       {/* Featured listings */}
       <section className="border-t border-ink-700/60 bg-ink-900/30 px-4 py-20 sm:px-6">
