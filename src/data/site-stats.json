@@ -1,9 +1,14 @@
 {
-    "accounts_sold": 34,
+    "accounts_sold": 35,
     "gold_trades": 117,
     "avg_days_to_sell": 19,
     "tracking_since": "2026-07",
     "recent_sold": [
+        {
+            "level": 660,
+            "category": "Distance",
+            "sold_on": "2026-11-25"
+        },
         {
             "level": 600,
             "category": "Melee",
@@ -37,11 +42,6 @@
         {
             "level": 514,
             "category": "Distance",
-            "sold_on": "2026-10-05"
-        },
-        {
-            "level": 586,
-            "category": "Magic",
             "sold_on": "2026-10-05"
         }
     ],
