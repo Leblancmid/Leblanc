@@ -15,6 +15,14 @@
         "featured": true
     },
     {
+        "id": "acc-53",
+        "category": "Melee",
+        "level": 677,
+        "image": "/listings/acc-53.jpg",
+        "listed_at": "2026-11-25",
+        "featured": true
+    },
+    {
         "id": "acc-42",
         "category": "Distance",
         "level": 674,
@@ -39,8 +47,7 @@
             "defense": 566
         },
         "image": "/listings/acc-51.jpg",
-        "listed_at": "2026-11-19",
-        "featured": true
+        "listed_at": "2026-11-19"
     },
     {
         "id": "acc-50",
