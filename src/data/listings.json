@@ -68,8 +68,10 @@
             "defense": 566
         },
         "image": "/listings/acc-35.jpg",
-        "price": "1.7KKK",
-        "listed_at": "2026-09-02"
+        "price": "1.6KKK",
+        "listed_at": "2026-09-02",
+        "price_was": "1.7KKK",
+        "price_dropped_at": "2026-11-27"
     },
     {
         "id": "acc-3",
