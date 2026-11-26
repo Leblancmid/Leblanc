@@ -1,5 +1,19 @@
 [
     {
+        "id": "acc-54",
+        "category": "Magic",
+        "level": 732,
+        "stats": {
+            "melee": 384,
+            "distance": 272,
+            "magic": 700,
+            "defense": 612
+        },
+        "image": "/listings/acc-54.jpg",
+        "listed_at": "2026-11-26",
+        "featured": true
+    },
+    {
         "id": "acc-43",
         "category": "Distance",
         "level": 684,
@@ -10,9 +24,11 @@
             "defense": 567
         },
         "image": "/listings/acc-43.jpg",
-        "price": "2.5KKK",
+        "price": "2.4KKK",
         "listed_at": "2026-10-01",
-        "featured": true
+        "featured": true,
+        "price_was": "2.5KKK",
+        "price_dropped_at": "2026-11-26"
     },
     {
         "id": "acc-42",
@@ -39,8 +55,7 @@
             "defense": 555
         },
         "image": "/listings/acc-50.jpg",
-        "listed_at": "2026-11-14",
-        "featured": true
+        "listed_at": "2026-11-14"
     },
     {
         "id": "acc-35",
